@@ -5,7 +5,6 @@ function twoNumberSum(array, targetSum) {
   // make sure not to count the first character iterate through the array again with j
   // with and if condition save values if i + j === targetSum
   // make sure there are no duplicates
-  console.log(array, targetSum);
 }
 
 let array = [3, 5, -4, 8, 11, 1, -1, 6];
