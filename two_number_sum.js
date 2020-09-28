@@ -10,7 +10,7 @@ function twoNumberSum(array, targetSum) {
   let prevValues = {};
   let answer = [];
   // iterate once through the array and hold key value pairs
-  array.forEach((curr, i) => {
+  array.forEach((curr) => {
     let neededVal = targetSum - curr;
     let secondVal = prevValues[neededVal];
     if (secondVal !== undefined) {
