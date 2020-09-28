@@ -13,12 +13,13 @@ function twoNumberSum(array, targetSum) {
     // if(pairs[targetSum - currentValue] !== null)
     let neededVal = targetSum - curr;
     let secondVal = prevValues[neededVal];
-    if (secondVal !== null) {
+    if (secondVal !== undefined) {
       // save [i, pairs[targetSum - currentValue]]
+      console.log([curr, secondVal]);
       return [curr, secondVal];
     } else {
       // save {i : targetSum - currentValue}
-      prevValues[secondVal] = curr;
+      prevValues[curr] = curr;
     }
   });
 }
