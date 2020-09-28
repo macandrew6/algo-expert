@@ -8,20 +8,18 @@ function twoNumberSum(array, targetSum) {
   // make sure there are no duplicates
   //  efficient methods
   let prevValues = {};
+  let answer = [];
   // iterate once through the array and hold key value pairs
   array.forEach((curr, i) => {
-    // if(pairs[targetSum - currentValue] !== null)
     let neededVal = targetSum - curr;
     let secondVal = prevValues[neededVal];
     if (secondVal !== undefined) {
-      // save [i, pairs[targetSum - currentValue]]
-      console.log([curr, secondVal]);
-      return [curr, secondVal];
+      answer = [curr, neededVal];
     } else {
-      // save {i : targetSum - currentValue}
-      prevValues[curr] = curr;
+      prevValues[curr] = true;
     }
   });
+  return answer;
 }
 
 let array = [3, 5, -4, 8, 11, 1, -1, 6];
