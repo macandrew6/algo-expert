@@ -36,7 +36,6 @@ class BST {
 }
 
 function findClosestValueInBst(tree, target) {
-  // Write your code here.
   console.log(tree);
 }
 
