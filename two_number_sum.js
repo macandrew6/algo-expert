@@ -1,11 +1,5 @@
+// solution to optimize time
 function twoNumberSum(array, targetSum) {
-  // brute force method
-  // Write your code here.
-  // init an empty array
-  // iterate through the array with i
-  // make sure not to count the first character iterate through the array again with j
-  // with and if condition save values if i + j === targetSum
-  // make sure there are no duplicates
   //  efficient methods
   let prevValues = {};
   let answer = [];
@@ -21,6 +15,25 @@ function twoNumberSum(array, targetSum) {
   });
   return answer;
 }
+
+// alternative solution to optimize space
+// function twoNumberSum(array, targetSum) {
+//   array.sort((a, b) => a - b);
+//   console.log(array.sort((a, b) => a - b));
+//   let left = 0;
+//   let right = array.length - 1;
+//   while (left < right) {
+//     currentSum = array[left] + array[right];
+//     if (currentSum === targetSum) {
+//       return [array[left], array[right]];
+//     } else if (currentSum < targetSum) {
+//       left += 1;
+//     } else if (currentSum > targetSum) {
+//       right -= 1;
+//     }
+//   }
+//   return [];
+// }
 
 let array = [3, 5, -4, 8, 11, 1, -1, 6];
 let targetSum = 10;
