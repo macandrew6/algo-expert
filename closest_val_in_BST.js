@@ -37,6 +37,9 @@ class BST {
 
 function findClosestValueInBst(tree, target) {
   console.log(tree);
+  // starting at the top node
+  // init a least difference variable
+  // check to see if the current tree value is less than the target
 }
 
 let bst = new BST(10);
