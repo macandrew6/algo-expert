@@ -39,7 +39,14 @@ function findClosestValueInBst(tree, target) {
   console.log(tree);
   // starting at the top node
   // init a least difference variable
-  // check to see if the current tree value is less than the target
+  // closest value
+  // if the current tree value is less than the target
+  // check the left side of the tree
+  // if the current tree value is greater than the target
+  // check the right side of the tree
+  // algorithm should check if target - node value is less
+  // than the current least difference, then update the closest
+  // value
 }
 
 let bst = new BST(10);
