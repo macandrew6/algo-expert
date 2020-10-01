@@ -37,6 +37,7 @@ class BST {
 
 function findClosestValueInBst(tree, target) {
   console.log(tree);
+  // using dfs
   // starting at the top node
   // init a least difference variable
   // closest value
