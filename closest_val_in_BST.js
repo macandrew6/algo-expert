@@ -48,6 +48,8 @@ function findClosestValueInBst(tree, target) {
   // algorithm should check if target - node value is less
   // than the current least difference, then update the closest
   // value
+
+  // approach using bfs
 }
 
 let bst = new BST(10);
