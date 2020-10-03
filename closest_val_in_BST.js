@@ -41,7 +41,7 @@ function findClosestValueInBst(tree, target) {
   let closestValue;
   // init a closestValue variable
   // depth first search through all values in the tree
-  // if the current value is less than the closestValue
+  // if the  |target - current| value is less than the |target - closestValue|
   // reassign the closestValue to the current
   // return the closestValue
 
