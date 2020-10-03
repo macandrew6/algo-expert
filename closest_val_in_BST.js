@@ -35,18 +35,34 @@ class BST {
   }
 }
 
+// average: O(log(n)) / O(log((n)))
+// worst: O(n) / O(n)
 function findClosestValueInBst(tree, target) {
-  console.log(tree);
-  // using dfs
-  let closestValue;
+  // recursive approach =>
   // init a closestValue variable
-  // depth first search through all values in the tree
+  return helperMethod(tree, target, Number(Infinity));
+}
+
+function helperMethod(tree, target, closestValue) {
   // if the  |target - current| value is less than the |target - closestValue|
   // reassign the closestValue to the current
   // return the closestValue
-
-  // approach using bfs
+  if (!tree) {
+    return closestValue;
+  }
+  if (Math.abs(target - closestValue) > Math.abs(target - tree.value)) {
+    closestValue = tree.value;
+  }
+  if (target < tree.value) {
+    return helperMethod(tree.left, target, closestValue);
+  } else if (target > tree.value) {
+    return helperMethod(tree.right, target, closestValue);
+  } else {
+    return closestValue;
+  }
 }
+
+// iterative approach
 
 let bst = new BST(10);
 bst.left = new BST(5);
