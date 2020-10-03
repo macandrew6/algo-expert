@@ -38,16 +38,12 @@ class BST {
 function findClosestValueInBst(tree, target) {
   console.log(tree);
   // using dfs
-  // starting at the top node
-  // init a least difference variable
-  // closest value
-  // if the current tree value is less than the target
-  // check the left side of the tree
-  // if the current tree value is greater than the target
-  // check the right side of the tree
-  // algorithm should check if target - node value is less
-  // than the current least difference, then update the closest
-  // value
+  let closestValue;
+  // init a closestValue variable
+  // depth first search through all values in the tree
+  // if the current value is less than the closestValue
+  // reassign the closestValue to the current
+  // return the closestValue
 
   // approach using bfs
 }
