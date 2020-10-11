@@ -69,6 +69,7 @@ function findClosestValueInBst(bst, target) {
   // reassign the bst if the target is less than equal to or
   // greater than the current bst value
   // new pseudo code
+  // start with conditions
 }
 
 let bst = new BST(10);
