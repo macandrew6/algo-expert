@@ -63,10 +63,12 @@ class BST {
 // }
 
 // iterative approach
-// average O(log(n)) time / O(1) space
+// average: O(log(n)) time / O(1) space
+// worst: O(n) time / O(1) space
 function findClosestValueInBst(bst, target) {
   // reassign the bst if the target is less than equal to or
   // greater than the current bst value
+  // new pseudo code
 }
 
 let bst = new BST(10);
