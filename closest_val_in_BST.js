@@ -70,6 +70,7 @@ function findClosestValueInBst(bst, target) {
   // greater than the current bst value
   // new pseudo code
   // start with conditions
+  let currentNode = bst;
 }
 
 let bst = new BST(10);
