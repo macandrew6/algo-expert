@@ -71,6 +71,7 @@ function findClosestValueInBst(bst, target) {
   // new pseudo code
   // start with conditions
   let currentNode = bst;
+  let closestValue = bst.value;
 }
 
 let bst = new BST(10);
