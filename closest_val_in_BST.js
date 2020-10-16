@@ -71,9 +71,10 @@ function findClosestValueInBst(bst, target) {
   // new pseudo code
   // start with conditions
   let currentNode = bst;
-  let closestValue = bst.value;
+  let closestValue = bst.value; // might change to currentNode.value
 
   if (Math.abs(target - closestValue) > Math.abs(target - currentNode.value)) {
+    // reassign currentNoden value
   }
 }
 
