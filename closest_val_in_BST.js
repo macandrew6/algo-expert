@@ -75,7 +75,7 @@ function findClosestValueInBst(bst, target) {
 
   if (Math.abs(target - closestValue) > Math.abs(target - currentNode.value)) {
     // reassign currentNoden value
-    currentNode = currentNode.left;
+    currentNode = currentNode.value;
   } else if (Math.abs()) {
   }
 }
