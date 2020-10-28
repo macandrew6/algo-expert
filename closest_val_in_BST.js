@@ -78,7 +78,7 @@ function findClosestValueInBst(bst, target) {
     currentNode = currentNode.value;
   } else if (Math.abs()) {
     // reassign current node to currentnode.left
-    // solving today
+    // solving right now
   }
 }
 
