@@ -71,15 +71,16 @@ function findClosestValueInBst(bst, target) {
   // new pseudo code
   // start with conditions
   let currentNode = bst;
-  let closestValue = bst.value; // might change to currentNode.value
+  while (currentNode) {}
+  // let closestValue = bst.value; // might change to currentNode.value
 
-  if (Math.abs(target - closestValue) > Math.abs(target - currentNode.value)) {
-    // reassign currentNoden value
-    currentNode = currentNode.value;
-  } else if (Math.abs()) {
-    // reassign current node to currentnode.left
-    // solving right now
-  }
+  // if (Math.abs(target - closestValue) > Math.abs(target - currentNode.value)) {
+  //   // reassign currentNoden value
+  //   currentNode = currentNode.value;
+  // } else if (Math.abs()) {
+  //   // reassign current node to currentnode.left
+  //   // solving right now
+  // }
 }
 
 let bst = new BST(10);
