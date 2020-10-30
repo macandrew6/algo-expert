@@ -83,18 +83,10 @@ function findClosestValueInBst(bst, target) {
     } else if (target > currentNode.value) {
       currentNode = currentNode.right;
     } else {
-      return closestValue;
+      break;
     }
   }
-  // let closestValue = bst.value; // might change to currentNode.value
-
-  // if (Math.abs(target - closestValue) > Math.abs(target - currentNode.value)) {
-  //   // reassign currentNoden value
-  //   currentNode = currentNode.value;
-  // } else if (Math.abs()) {
-  //   // reassign current node to currentnode.left
-  //   // solving right now
-  // }
+  return closestValue;
 }
 
 let bst = new BST(10);
@@ -107,4 +99,4 @@ bst.right.left = new BST(13);
 bst.right.right = new BST(22);
 bst.right.left.right = new BST(14);
 
-console.log(findClosestValueInBst(bst, 12));
+console.log(findClosestValueInBst(bst, 14));
