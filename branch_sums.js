@@ -11,4 +11,12 @@ root node and ends at any leaf node.
 Each BinaryTree node has an interger value, a left child node,
 and a right child node. Children nodes can either be BinaryTree 
 nodes themselves or None/null.
+
+tree =        1
+            /   \
+           2     3
+         /  \   /  \
+       4     5 6    7
+      / \   /
+     8   9 10
  */
