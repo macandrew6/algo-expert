@@ -27,3 +27,11 @@ output = [15, 16, 18, 10, 11]
 10 == 1 + 3 + 6
 11 == 1 + 3 + 7
  */
+
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
