@@ -35,3 +35,5 @@ class BinaryTree {
     this.right = null;
   }
 }
+
+//use a dfs
