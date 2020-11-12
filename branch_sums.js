@@ -41,4 +41,5 @@ function branchSum(root) {
   // init an empty array
   // use dfs to go through the tree and and the end of every leaf node
   // and save the value into the array
+  // return array
 }
