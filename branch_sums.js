@@ -40,9 +40,10 @@ class BinaryTree {
 function branchSum(root) {
   // init an empty array
   let result = [];
+  let sum = 0;
   // using recursion
   if (!root) {
-    return 0;
+    result.push(sum);
   }
   // use dfs to go through the tree and and the end of every leaf node
   // and save the value into the array
