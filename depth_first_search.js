@@ -10,3 +10,5 @@ takes in an empty array, traverses the tree using the Depth-first
 Search approach (specifically navigating the tree from left to right),
 stores all the nodes' names in the input array, and returns it.
 */
+
+function depthFirstSearch(node) {}
