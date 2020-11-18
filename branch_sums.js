@@ -48,12 +48,11 @@ function calculateBranchSum(node, runningSum, sums) {
   if (!node) {
     return;
   }
+  let newRunningSum = runningSum + node.value;
   if (!node.left && !node.right) {
-    result.push(runningSum);
+    sums.push(newRunningSum);
+    return;
   }
-  calculateBranchSum(node.left, runningSum, sums);
-  calculateBranchSum(node.right, runningSum, sums);
-  // use dfs to go through the tree and and the end of every leaf node
-  // and save the value into the array
-  // return array
+  calculateBranchSum(node.left, newRunningSum, sums);
+  calculateBranchSum(node.right, newRunningSum, sums);
 }
