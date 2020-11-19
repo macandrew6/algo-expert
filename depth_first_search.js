@@ -22,6 +22,12 @@ class Node {
     return this;
   }
 
+  /*
+  space: O(V) - where V is the number of vertices
+  time: O(V + E) - where V is the number of vertices in the graph 
+                   and E is the number of edges
+  */
+
   depthFirstSearch(array) {
     // establish a base case
     if (!this.children.length === 0) {
