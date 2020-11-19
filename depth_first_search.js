@@ -11,4 +11,26 @@ Search approach (specifically navigating the tree from left to right),
 stores all the nodes' names in the input array, and returns it.
 */
 
-function depthFirstSearch(node) {}
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  depthFirstSearch(array) {
+    // establish a base case
+    if (!this.children.length === 0) {
+      return;
+    }
+    array.push(this.name);
+    for (let i = 0; i < this.children.length; i++) {
+      this.children[i].depthFirstSearch(array);
+    }
+    return array;
+  }
+}
