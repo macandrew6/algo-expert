@@ -23,5 +23,59 @@ linked list. You won't be told if the input nodes are already in the
 linked list, so your code will have to defensively handle this 
 scenario.
 
+If you're doing this problem in an untyped language like Python or
+Javascript, you may want to look at the various function signatures
+in a typed language like Java or TypeScript to get a better idea of
+what each input parameter is.
 
+Each Node has an integer value as well as a prev node and a next
+node, both of which can point to either another node or None / null
 */
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
+}
+
+// Feel free to add new properties and methods to the class.
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  setHead(node) {
+    // Write your code here.
+  }
+
+  setTail(node) {
+    // Write your code here.
+  }
+
+  insertBefore(node, nodeToInsert) {
+    // Write your code here.
+  }
+
+  insertAfter(node, nodeToInsert) {
+    // Write your code here.
+  }
+
+  insertAtPosition(position, nodeToInsert) {
+    // Write your code here.
+  }
+
+  removeNodesWithValue(value) {
+    // Write your code here.
+  }
+
+  remove(node) {
+    // Write your code here.
+  }
+
+  containsNodeWithValue(value) {
+    // Write your code here.
+  }
+}
