@@ -49,10 +49,17 @@ class DoublyLinkedList {
 
   setHead(node) {
     // Write your code here.
+    if (!this.head) {
+      this.head = node;
+    } else {
+      this.head.next = this.head;
+      this.head = node;
+    }
   }
 
   setTail(node) {
     // Write your code here.
+    this.tail = node;
   }
 
   insertBefore(node, nodeToInsert) {
