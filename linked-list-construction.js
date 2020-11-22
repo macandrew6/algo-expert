@@ -66,6 +66,8 @@ class DoublyLinkedList {
 
   insertBefore(node, nodeToInsert) {
     // Write your code here.
+    // find node within the linked list O(N)
+    // insert nodeToInsert before found node
   }
 
   insertAfter(node, nodeToInsert) {
