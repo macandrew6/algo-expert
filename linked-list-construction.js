@@ -76,6 +76,7 @@ class DoublyLinkedList {
     }
     insertBefore(node.next)
     // insert nodeToInsert before found node
+    // testing
   }
 
   insertAfter(node, nodeToInsert) {
