@@ -67,16 +67,15 @@ class DoublyLinkedList {
   insertBefore(node, nodeToInsert) {
     // Write your code here.
     // find node within the linked list O(N)
-    if (!node.value) {
-      return;
-    } else {
+    let current = this.head;
+   if (current.value === node.value) {
       nodeToInsert.next = node;
       nodeToInsert.prev = node.prev;
       node.prev = nodeToInsert;
-    }
-    insertBefore(node.next)
+    } 
+    insertBefore(current.next, nodeToInsert);
     // insert nodeToInsert before found node
-    // live testing
+    // livetesting
   }
 
   insertAfter(node, nodeToInsert) {
