@@ -83,7 +83,7 @@ class DoublyLinkedList {
     let current = this.head;
     if (current.value === node.value) {
       nodeToInsert.prev = node;
-      nodeToInsert.next = node.prev;
+      nodeToInsert.next = node.next;
       node.next = nodeToInsert;
     } 
     insertBefore(current.next, nodeToInsert);
