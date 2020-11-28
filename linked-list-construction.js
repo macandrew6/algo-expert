@@ -80,6 +80,13 @@ class DoublyLinkedList {
 
   insertAfter(node, nodeToInsert) {
     // Write your code here.
+    let current = this.head;
+    if (current.value === node.value) {
+      nodeToInsert.prev = node;
+      nodeToInsert.next = node.prev;
+      node.next = nodeToInsert;
+    } 
+    insertBefore(current.next, nodeToInsert);
   }
 
   insertAtPosition(position, nodeToInsert) {
