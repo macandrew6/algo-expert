@@ -95,9 +95,9 @@ class DoublyLinkedList {
     while (position !== 0) {
       if (position === 0) {
         // do the transitions
-        nodeToInsert.prev = node;
-        nodeToInsert.next = node.next;
-        node.next = nodeToInsert;
+        nodeToInsert.prev = currentNode;
+        nodeToInsert.next = currentNode.next;
+        currentNode.next = nodeToInsert;
       } else {
         currentNode = currentNode.next;
         position -= 1;
