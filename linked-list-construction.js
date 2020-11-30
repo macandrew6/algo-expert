@@ -73,7 +73,7 @@ class DoublyLinkedList {
       nodeToInsert.prev = node.prev;
       node.prev = nodeToInsert;
     } 
-    insertBefore(current.next, nodeToInsert);
+    this.insertBefore(current.next, nodeToInsert);
     // insert nodeToInsert before found node
     // livetesting
   }
@@ -86,7 +86,7 @@ class DoublyLinkedList {
       nodeToInsert.next = node.next;
       node.next = nodeToInsert;
     } 
-    insertBefore(current.next, nodeToInsert);
+    this.insertAfter(current.next, nodeToInsert);
   }
 
   insertAtPosition(position, nodeToInsert) {
