@@ -91,6 +91,18 @@ class DoublyLinkedList {
 
   insertAtPosition(position, nodeToInsert) {
     // Write your code here.
+    let currentNode = this.head;
+    while (position !== 0) {
+      if (position === 0) {
+        // do the transitions
+        nodeToInsert.prev = node;
+        nodeToInsert.next = node.next;
+        node.next = nodeToInsert;
+      } else {
+        currentNode = currentNode.next;
+        position -= 1;
+      }
+    }
   }
 
   removeNodesWithValue(value) {
