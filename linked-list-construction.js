@@ -91,6 +91,7 @@ class DoublyLinkedList {
 
   insertAtPosition(position, nodeToInsert) {
     // Write your code here.
+    // pseudo code
     let currentNode = this.head;
     while (position !== 0) {
       if (position === 0) {
