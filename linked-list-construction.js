@@ -108,7 +108,7 @@ class DoublyLinkedList {
 
   removeNodesWithValue(value) {
     // Write your code here.
-    // Search for node with the given value
+    // Search for nodes with the given value
     // if linked list doesn't contain node with value return null
     // 
   }
