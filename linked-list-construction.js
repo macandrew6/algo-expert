@@ -114,11 +114,16 @@ class DoublyLinkedList {
       if (node.value === value) {
         // remove the node from the list
         // reassign the prev and next properties before 
-        // removing the node
+        let last = node.prev;
+        node.prev.next = node.next;
+        node.next.prev = last;
+        node.prev = null;
+        node.next = null;
+      } else {
+        node = node.next;
       }
     }
     // if linked list doesn't contain node with value return null
-    // 
   }
 
   remove(node) {
