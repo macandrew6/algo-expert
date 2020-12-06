@@ -123,7 +123,6 @@ class DoublyLinkedList {
         node = node.next;
       }
     }
-    // if linked list doesn't contain node with value return null
   }
 
   remove(node) {
