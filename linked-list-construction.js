@@ -127,6 +127,9 @@ class DoublyLinkedList {
 
   remove(node) {
     // Write your code here.
+    // search through the linked list
+    // starting at the head
+    // remove the node that has the same value as the node provided
   }
 
   containsNodeWithValue(value) {
