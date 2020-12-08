@@ -40,6 +40,12 @@ class Node {
   }
 }
 
+// Searching runs in O(N) time and O(1) space
+// Removing methods runs in O(1) time and O(1) space
+// Removing multiple nodes runs in O(N) time and O(1) space
+// Setting heads and tails runs in O(1) time and O(1) space
+// Setting at position runs in O(p) time and O(1) space
+
 // Feel free to add new properties and methods to the class.
 class DoublyLinkedList {
   constructor() {
@@ -128,15 +134,37 @@ class DoublyLinkedList {
 
   remove(node) {
     // Write your code here.
+    // check for edge cases
+    if (node === this.head) {
+      this.head = this.head.next;
+    }
+    if (node === this.tail) {
+      this.tail = this.tail.prev;
+    }
     // search through the linked list
     // starting at the head
     // remove the node that has the same value as the node provided
-
+    this.removeNodeBindings()
   }
 
   containsNodeWithValue(value) {
     // Write your code here.
     // return true if node with value is contained in the linked list
     // else return false
+    let current = this.head;
+    while (current !== null && current.value !== value) {
+      current = current.next;
+    }
+    return Boolean(current);
+  }
+
+  removeNodeBindings(node) {
+    if (node.prev !== null) {
+      node.prev.next = node.next;
+    } else if (node.next !== null) {
+      node.next.prev = node.prev;
+    }
+    node.prev = null;
+    node.next = null;
   }
 }
