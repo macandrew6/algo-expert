@@ -51,6 +51,7 @@ class DoublyLinkedList {
     // Write your code here.
     if (!this.head) {
       this.head = node;
+      this.tail = node;
     } else {
       this.head.next = this.head;
       this.head = node;
