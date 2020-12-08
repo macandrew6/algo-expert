@@ -144,7 +144,7 @@ class DoublyLinkedList {
     // search through the linked list
     // starting at the head
     // remove the node that has the same value as the node provided
-    this.removeNodeBindings()
+    this.removeNodeBindings(node);
   }
 
   containsNodeWithValue(value) {
