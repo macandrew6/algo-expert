@@ -128,17 +128,12 @@ class DoublyLinkedList {
   }
 
   remove(node) {
-    // Write your code here.
-    // check for edge cases
     if (node === this.head) {
       this.head = this.head.next;
     }
     if (node === this.tail) {
       this.tail = this.tail.prev;
     }
-    // search through the linked list
-    // starting at the head
-    // remove the node that has the same value as the node provided
     this.removeNodeBindings(node);
   }
 
