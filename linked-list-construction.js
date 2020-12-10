@@ -66,7 +66,10 @@ class DoublyLinkedList {
 
   setTail(node) {
     // Write your code here.
-    if(this.head) {
+    if(this.head && this.tail) {
+      this.tail = node;
+    } else {
+      this.tail.prev = this.tail;
       this.tail = node;
     }
   }
