@@ -55,22 +55,29 @@ class DoublyLinkedList {
 
   setHead(node) {
     // Write your code here.
+    let temp = this.head;
     if (!this.head) {
       this.head = node;
       this.tail = node;
     } else {
       this.head.next = this.head;
       this.head = node;
+      this.head.next = temp;
+      temp.prev = this.head;
     }
   }
 
   setTail(node) {
     // Write your code here.
-    if(this.head && this.tail) {
+    let temp = this.tail;
+    if (!this.head && !this.tail) {
+      this.head = node;
       this.tail = node;
     } else {
       this.tail.prev = this.tail;
       this.tail = node;
+      temp.next = node;
+      node.prev = temp;
     }
   }
 
