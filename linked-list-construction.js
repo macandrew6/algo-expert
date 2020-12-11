@@ -110,6 +110,7 @@ class DoublyLinkedList {
     // Write your code here.
     // pseudo code
     let currentNode = this.head;
+    // theoretically should work
     while (position !== 0) {
       if (position === 0) {
         // do the transitions
