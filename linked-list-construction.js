@@ -85,7 +85,10 @@ class DoublyLinkedList {
     // Write your code here.
     // find node within the linked list O(N)
     let current = this.head;
-   if (current.value === node.value) {
+    if (this.head === nodeToInsert && this.tail === nodeToInsert) {
+      return;
+    }
+    if (current.value === node.value) {
       nodeToInsert.next = node;
       nodeToInsert.prev = node.prev;
       node.prev = nodeToInsert;
