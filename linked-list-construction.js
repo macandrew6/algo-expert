@@ -90,11 +90,15 @@ class DoublyLinkedList {
       return;
     }
     this.remove(nodeToInsert);
-    if (current.value === node.value) {
-      nodeToInsert.next = node;
-      nodeToInsert.prev = node.prev;
-      node.prev = nodeToInsert;
-    } 
+    nodeToInsert.prev = node.prev;
+    nodeToInsert.next = node;
+    if (!node.prev) {
+      this.head = nodeToInsert;
+    } else {
+      node.prev.next = nodeToInsert;
+    }
+    node.prev = nodeToInsert;
+
     this.insertBefore(current.next, nodeToInsert);
     // insert nodeToInsert before found node
     // livetesting
@@ -103,9 +107,16 @@ class DoublyLinkedList {
   insertAfter(node, nodeToInsert) {
     // Write your code here.
     let current = this.head;
+    if (this.head === nodeToInsert && this.tail === nodeToInsert) {
+      return;
+    }
+    this.remove(nodeToInsert);
     if (current.value === node.value) {
       nodeToInsert.prev = node;
       nodeToInsert.next = node.next;
+      if (!node.next) {
+        
+      }
       node.next = nodeToInsert;
     } 
     this.insertAfter(current.next, nodeToInsert);
