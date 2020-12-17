@@ -67,7 +67,7 @@ class DoublyLinkedList {
   setTail(node) {
     // Write your code here.
     let temp = this.tail;
-    if (!this.head && !this.tail) {
+    if (!this.tail) {
       this.head = node;
       this.tail = node;
     } else {
@@ -121,17 +121,23 @@ class DoublyLinkedList {
   insertAtPosition(position, nodeToInsert) {
     // Write your code here.
     // whiteboarding
+    if (position === 1) {
+      this.setHead(nodeToInsert);
+      // return;
+    }
     let currentNode = this.head;
+    let currentPosition = 1;
     // theoretically should work
-    while (position !== 0) {
-      if (position === 0) {
+    while (currentPosition && currentPosition !== position) {
+      currentNode = currentNode.next;
+      if (currentPosition === 0) {
         // do the transitions
         nodeToInsert.prev = currentNode;
         nodeToInsert.next = currentNode.next;
         currentNode.next = nodeToInsert;
       } else {
         currentNode = currentNode.next;
-        position -= 1;
+        currentPosition += 1;
       }
     }
   }
