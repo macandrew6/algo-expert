@@ -89,6 +89,7 @@ class DoublyLinkedList {
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
     }
+    this.remove(nodeToInsert);
     if (current.value === node.value) {
       nodeToInsert.next = node;
       nodeToInsert.prev = node.prev;
