@@ -60,10 +60,7 @@ class DoublyLinkedList {
       this.head = node;
       this.tail = node;
     } else {
-      this.head.next = this.head;
-      this.head = node;
-      this.head.next = temp;
-      temp.prev = this.head;
+      this.insertBefore(this.head, node);
     }
   }
 
@@ -74,10 +71,7 @@ class DoublyLinkedList {
       this.head = node;
       this.tail = node;
     } else {
-      this.tail.prev = this.tail;
-      this.tail = node;
-      temp.next = node;
-      node.prev = temp;
+      this.insertAfter(this.tail, node);
     }
   }
 
@@ -115,7 +109,9 @@ class DoublyLinkedList {
       nodeToInsert.prev = node;
       nodeToInsert.next = node.next;
       if (!node.next) {
-        
+        this.tail = nodeToInsert;
+      } else {
+        node.next.prev =  nodeToInsert;
       }
       node.next = nodeToInsert;
     } 
