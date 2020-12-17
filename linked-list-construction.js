@@ -85,6 +85,7 @@ class DoublyLinkedList {
     // Write your code here.
     // find node within the linked list O(N)
     let current = this.head;
+    // establishing basecase
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
     }
