@@ -130,6 +130,7 @@ class DoublyLinkedList {
     // theoretically should work
     while (currentPosition && currentPosition !== position) {
       currentNode = currentNode.next;
+      // needs corrections
       if (currentPosition === 0) {
         // do the transitions
         nodeToInsert.prev = currentNode;
