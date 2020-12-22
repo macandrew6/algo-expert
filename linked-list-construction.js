@@ -60,6 +60,7 @@ class DoublyLinkedList {
       this.head = node;
       this.tail = node;
     } else {
+      // bug here
       this.insertBefore(this.head, node);
     }
   }
