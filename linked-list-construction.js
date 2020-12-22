@@ -130,17 +130,11 @@ class DoublyLinkedList {
     // theoretically should work
     while (currentPosition && currentPosition !== position) {
       currentNode = currentNode.next;
-      // needs corrections
-      if (currentPosition === 0) {
-        // do the transitions
-        nodeToInsert.prev = currentNode;
-        nodeToInsert.next = currentNode.next;
-        currentNode.next = nodeToInsert;
-      } else {
-        currentNode = currentNode.next;
-        currentPosition += 1;
-      }
+      currentPosition += 1;
     }
+    nodeToInsert.prev = currentNode;
+    nodeToInsert.next = currentNode.next;
+    currentNode.next = nodeToInsert;
   }
 
   removeNodesWithValue(value) {
