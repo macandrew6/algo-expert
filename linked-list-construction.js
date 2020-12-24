@@ -79,7 +79,6 @@ class DoublyLinkedList {
   insertBefore(node, nodeToInsert) {
     // Write your code here.
     // find node within the linked list O(N)
-    let current = this.head;
     // establishing basecase
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
@@ -94,29 +93,24 @@ class DoublyLinkedList {
     }
     node.prev = nodeToInsert;
 
-    this.insertBefore(current.next, nodeToInsert);
     // insert nodeToInsert before found node
     // livetesting
   }
 
   insertAfter(node, nodeToInsert) {
     // Write your code here.
-    let current = this.head;
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
     }
     this.remove(nodeToInsert);
-    if (current.value === node.value) {
-      nodeToInsert.prev = node;
-      nodeToInsert.next = node.next;
-      if (!node.next) {
-        this.tail = nodeToInsert;
-      } else {
-        node.next.prev =  nodeToInsert;
-      }
-      node.next = nodeToInsert;
-    } 
-    this.insertAfter(current.next, nodeToInsert);
+    nodeToInsert.prev = node;
+    nodeToInsert.next = node.next;
+    if (!node.next) {
+      this.tail = nodeToInsert;
+    } else {
+      node.next.prev =  nodeToInsert;
+    }
+    node.next = nodeToInsert;
   }
 
   insertAtPosition(position, nodeToInsert) {
