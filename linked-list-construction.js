@@ -126,12 +126,11 @@ class DoublyLinkedList {
     }
     let currentNode = this.head;
     let currentPosition = 1;
-    // theoretically should work
     while (currentNode !== null && currentPosition !== position) {
       currentNode = currentNode.next;
       currentPosition += 1;
     }
-    if (currentNode !== null) {
+    if (currentNode !== null) { // if no node, then insert node
       this.insertBefore(currentNode, nodeToInsert);
     } else {
       this.setTail(nodeToInsert);
