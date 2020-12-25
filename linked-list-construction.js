@@ -53,6 +53,7 @@ class DoublyLinkedList {
     this.tail = null;
   }
 
+  // O(1) time | O(1) space
   setHead(node) {
     // Write your code here.
     let temp = this.head;
@@ -65,6 +66,7 @@ class DoublyLinkedList {
     }
   }
 
+  // O(1) time | O(1) space
   setTail(node) {
     // Write your code here.
     let temp = this.tail;
@@ -76,6 +78,7 @@ class DoublyLinkedList {
     }
   }
 
+  // O(1) time | O(1) space
   insertBefore(node, nodeToInsert) {
     // Write your code here.
     // find node within the linked list O(N)
@@ -97,6 +100,7 @@ class DoublyLinkedList {
     // livetesting
   }
 
+  // O(1) time | O(1) space
   insertAfter(node, nodeToInsert) {
     // Write your code here.
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
@@ -123,13 +127,15 @@ class DoublyLinkedList {
     let currentNode = this.head;
     let currentPosition = 1;
     // theoretically should work
-    while (currentPosition && currentPosition !== position) {
+    while (currentNode !== null && currentPosition !== position) {
       currentNode = currentNode.next;
       currentPosition += 1;
     }
-    nodeToInsert.prev = currentNode;
-    nodeToInsert.next = currentNode.next;
-    currentNode.next = nodeToInsert;
+    if (currentNode !== null) {
+      this.insertBefore(currentNode, nodeToInsert);
+    } else {
+      this.setTail(nodeToInsert);
+    }
   }
 
   removeNodesWithValue(value) {
