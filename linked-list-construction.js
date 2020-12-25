@@ -55,7 +55,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   setHead(node) {
-    // Write your code here.
     let temp = this.head;
     if (!this.head) {
       this.head = node;
@@ -68,7 +67,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   setTail(node) {
-    // Write your code here.
     let temp = this.tail;
     if (!this.tail) {
       this.head = node;
@@ -80,9 +78,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   insertBefore(node, nodeToInsert) {
-    // Write your code here.
-    // find node within the linked list O(N)
-    // establishing basecase
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
     }
@@ -95,9 +90,6 @@ class DoublyLinkedList {
       node.prev.next = nodeToInsert;
     }
     node.prev = nodeToInsert;
-
-    // insert nodeToInsert before found node
-    // livetesting
   }
 
   // O(1) time | O(1) space
