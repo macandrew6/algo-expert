@@ -55,7 +55,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   setHead(node) {
-    let temp = this.head;
     if (!this.head) {
       this.head = node;
       this.tail = node;
