@@ -108,7 +108,7 @@ class DoublyLinkedList {
     node.next = nodeToInsert;
   }
 
-  // O (1) time | O(1) space
+  // O (N) time | O(1) space
   insertAtPosition(position, nodeToInsert) {
     // Write your code here.
     // whiteboarding
