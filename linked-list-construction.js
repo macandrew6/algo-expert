@@ -114,7 +114,6 @@ class DoublyLinkedList {
     // whiteboarding
     if (position === 1) {
       this.setHead(nodeToInsert);
-      // return;
     }
     let currentNode = this.head;
     let currentPosition = 1;
