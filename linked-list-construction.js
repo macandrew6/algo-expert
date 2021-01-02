@@ -111,7 +111,6 @@ class DoublyLinkedList {
   // O (N) time | O(1) space
   insertAtPosition(position, nodeToInsert) {
     // Write your code here.
-    // whiteboarding
     if (position === 1) {
       this.setHead(nodeToInsert);
     }
