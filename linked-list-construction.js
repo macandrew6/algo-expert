@@ -120,7 +120,7 @@ class DoublyLinkedList {
       currentNode = currentNode.next;
       currentPosition += 1;
     }
-    if (currentNode !== null) { // if no node, then insert node
+    if (currentNode !== null) { 
       this.insertBefore(currentNode, nodeToInsert);
     } else {
       this.setTail(nodeToInsert);
