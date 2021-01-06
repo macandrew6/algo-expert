@@ -140,7 +140,6 @@ class DoublyLinkedList {
     }
     */
     if (this.containsNodeWithValue(node.value)) { 
-      // does this even work?
       this.remove(node);
     }
   }
