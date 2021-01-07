@@ -144,6 +144,7 @@ class DoublyLinkedList {
     }
   }
 
+  // O (1) time/ O (1) space
   remove(node) {
     if (node === this.head) {
       this.head = this.head.next;
