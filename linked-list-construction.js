@@ -167,6 +167,7 @@ class DoublyLinkedList {
     return Boolean(current);
   }
 
+  // O (1) time / O (1) space
   removeNodeBindings(node) {
     if (node.prev !== null) {
       node.prev.next = node.next;
