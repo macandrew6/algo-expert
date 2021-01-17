@@ -132,6 +132,7 @@ class DoublyLinkedList {
     // Write your code here.
     let node = this.head;
     /* 
+    debugging
     while (node !== null) {
       let nodeToRemove = node;
       node = node.next;
