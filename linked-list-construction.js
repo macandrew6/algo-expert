@@ -110,7 +110,6 @@ class DoublyLinkedList {
 
   // O (N) time | O(1) space
   insertAtPosition(position, nodeToInsert) {
-    // Write your code here.
     // debugging this fn
     if (position === 1) {
       this.setHead(nodeToInsert);
@@ -129,7 +128,6 @@ class DoublyLinkedList {
   }
 
   removeNodesWithValue(value) {
-    // Write your code here.
     let node = this.head;
     /* 
     while (node !== null) {
