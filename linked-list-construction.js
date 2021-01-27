@@ -155,7 +155,6 @@ class DoublyLinkedList {
 
   // O (N) time / O (1) space
   containsNodeWithValue(value) {
-    // Write your code here.
     // return true if node with value is contained in the linked list
     // else return false
     let current = this.head;
