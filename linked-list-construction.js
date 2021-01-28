@@ -93,7 +93,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   insertAfter(node, nodeToInsert) {
-    // Write your code here.
     if (this.head === nodeToInsert && this.tail === nodeToInsert) {
       return;
     }
