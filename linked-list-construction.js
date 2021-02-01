@@ -65,7 +65,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   setTail(node) {
-    // testing new system
     let temp = this.tail;
     if (!this.tail) {
       this.head = node;
