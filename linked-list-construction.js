@@ -65,7 +65,6 @@ class DoublyLinkedList {
 
   // O(1) time | O(1) space
   setTail(node) {
-    let temp = this.tail;
     if (!this.tail) {
       this.head = node;
       this.tail = node;
@@ -117,7 +116,7 @@ class DoublyLinkedList {
       currentNode = currentNode.next;
       currentPosition += 1;
     }
-    if (currentNode !== null) { 
+    if (currentNode) { 
       this.insertBefore(currentNode, nodeToInsert);
     } else {
       this.setTail(nodeToInsert);
@@ -126,17 +125,12 @@ class DoublyLinkedList {
 
   removeNodesWithValue(value) {
     let node = this.head;
-    /* 
     while (node !== null) {
       let nodeToRemove = node;
       node = node.next;
-      if (node.value === value) {
-        this.remove(node)
+      if (nodeToRemove.value === value) {
+        this.remove(nodeToRemove)
       }
-    }
-    */
-    if (this.containsNodeWithValue(node.value)) { 
-      this.remove(node);
     }
   }
 
@@ -166,7 +160,8 @@ class DoublyLinkedList {
   removeNodeBindings(node) {
     if (node.prev !== null) {
       node.prev.next = node.next;
-    } else if (node.next !== null) {
+    } 
+    if (node.next !== null) {
       node.next.prev = node.prev;
     }
     node.prev = null;
