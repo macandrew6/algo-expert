@@ -46,6 +46,14 @@ class LinkedList {
     if (second === null) {
       head.value = head.next.value;
       head.next = head.next.next;
+      return;
     }
-    
+    while (second.next !== null) {
+      second = second.next;
+      first = first.next;
+    }
+    // now first is in the position right before the kth node from the end
+    // we want this because we want to remove kth node from the list by 
+    // reassigning the node prior to the kth node's next pointer
+    first.next = first.next.next;
   }
