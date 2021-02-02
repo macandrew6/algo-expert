@@ -14,3 +14,7 @@ array = [1, 2, 3]
 function getPermutations(array) {
   // Write your code here.
 }
+
+function helper(array, perm, perms) {
+  
+}
