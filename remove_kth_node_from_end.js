@@ -28,6 +28,7 @@ class LinkedList {
     }
   }
   
+  // time O (1) | space O (1)
   function removeKthNodeFromEnd(head, k) {
     // Write your code here.
     // set 2 pointers k positions apart
