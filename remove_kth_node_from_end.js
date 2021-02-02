@@ -28,10 +28,17 @@ class LinkedList {
     }
   }
   
-  // time O (1) | space O (1)
+  // time O (N) | space O (1)
   function removeKthNodeFromEnd(head, k) {
     // Write your code here.
     // set 2 pointers k positions apart
+    let counter = 1;
+    let first = head;
+    let second = head;
+    while (counter <= k) {
+      second = second.next;
+      counter += 1;
+    }
     // have both pointers traverse the list
       // once fast pointer reachers the end stop traversal
       // pointer one should be in the position of the target node
