@@ -32,6 +32,10 @@ class LinkedList {
   function removeKthNodeFromEnd(head, k) {
     // Write your code here.
     // set 2 pointers k positions apart
+    // have both pointers traverse the list
+      // once fast pointer reachers the end stop traversal
+      // pointer one should be in the position of the target node
+        // somehow must keep track of prior node to the target node
     let counter = 1;
     let first = head;
     let second = head;
@@ -39,8 +43,9 @@ class LinkedList {
       second = second.next;
       counter += 1;
     }
-    // have both pointers traverse the list
-      // once fast pointer reachers the end stop traversal
-      // pointer one should be in the position of the target node
-        // somehow must keep track of prior node to the target node
+    if (second === null) {
+      head.value = head.next.value;
+      head.next = head.next.next;
+    }
+    
   }
