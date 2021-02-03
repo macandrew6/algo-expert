@@ -17,11 +17,15 @@ function getPermutations(array) {
 
 function helper(array, perm, perms) {
   let newArr;
+  let newPerm;
   if (array.length === 0) {
     perms.push(perm);
   } else {
     for (let i = 0; i < array.length; i++) {
+      let num = array[i];
       newArr = removeNumFrom(array);
+      newPerm = perm + num;
+      helper(newArr, newPerm, perms)
     }
   }
 }
