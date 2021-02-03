@@ -16,5 +16,16 @@ function getPermutations(array) {
 }
 
 function helper(array, perm, perms) {
+  let newArr;
+  if (array.length === 0) {
+    perms.push(perm);
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      newArr = removeNumFrom(array);
+    }
+  }
+}
+
+function removeNumFrom(arr) {
   
 }
