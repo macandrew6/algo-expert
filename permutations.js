@@ -56,6 +56,27 @@ function removeNumFrom(arr) {
 }
 */
 
+const getPermutations2 = (array) => {
+  let permutations = [];
+  helper2(0, array, permutations);
+  return permutations;
+}
+
+const helper2 = (i, array, permutations) => {
+  if (i === array.length - 1) {
+    permutations.push(array.slice())
+  } else {
+    for (let j = i; j < array.length; j++) {
+      swap(array, i, j);
+      helper(i+1, array, permutations);
+      swap(array, i, j);
+    }
+  }
+}
+
+const swap = (array, i, j) => {
+  array[i], array[j] = array[j], array[i];
+}
 /*
 second solution
 time O (n! * n) | space O ()
