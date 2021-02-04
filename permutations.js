@@ -11,9 +11,24 @@ array = [1, 2, 3]
 [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 */
 
-
+// Upper Bound: O(n^2*n!) time | O(n*n!) space
+// Roughly: O(n*n!) time | O(n*n!) space
 function getPermutations(array) {
-  // Write your code here.
+  let permutations = [];
+  permutationsHelper(array, [], permutations)
+  return permutations;
+}
+
+function helper(array, currentPermutation, permutations) {
+  if (array.length === 0) {
+    permutations.push(currentPermutation);
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      let newArray = array.slice(0,i).concat(array.slice(i + 1)); // O (n)
+      let newPermutation = currentPermutation.concat([array[i]]); // O (n)
+      helper(newArray, newPermutation)
+    }
+  }
 }
 
 /*
