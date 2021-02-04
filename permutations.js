@@ -11,6 +11,7 @@ array = [1, 2, 3]
 [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 */
 
+// time O (n!) | space
 function getPermutations(array) {
   // Write your code here.
 }
@@ -31,5 +32,6 @@ function helper(array, perm, perms) {
 }
 
 function removeNumFrom(arr) {
-  
+  arr.shift()
+  return arr;
 }
