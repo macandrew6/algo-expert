@@ -75,7 +75,7 @@ const helper2 = (i, array, permutations) => {
 }
 
 const swap = (array, i, j) => {
-  array[i], array[j] = array[j], array[i];
+  [array[i], array[j]] = [array[j], array[i]];
 }
 /*
 second solution
