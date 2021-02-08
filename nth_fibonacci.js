@@ -18,3 +18,21 @@ n = 2;
 n = 6;
 5 => 0, 1, 1, 2, 3, 5
 */
+
+const getNthFib = (n) => {
+  if (n === 2) {
+    return 1;
+  } else if (n === 1) {
+    return 0;
+  } else {
+    return getNthFib(n - 1) + getNthFib(n - 2);
+  }
+};
+/*
+getNthFib(6)
+  getNthFib(5) + getNthFib(4)
+    getNthFib(4) return + getNthFib(3) return => 2
+      getNthFib(3) return => 2 + getNthFib(2) return => 1
+        getNthFib(2) return => 1 + getNthFib(1) return => 0
+          getNthFib(1) return => 0 + getNthFib(0) return => 0
+*/
