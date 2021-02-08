@@ -41,4 +41,7 @@ const getNthFib = (n) => {
 const getNthFibMem = () => {
   // if n is in memoize
   // return memoize[n]
+  // else
+  // memoize[n] = fib(n - 1) + fib(n - 2)
+  // return memoize[n]
 };
