@@ -29,6 +29,7 @@ const getNthFib = (n) => {
   }
 };
 /*
+fib(n) = fib(n - 1) + fib(n - 2) for n > 2
 getNthFib(6)
   getNthFib(5) + getNthFib(4)
     getNthFib(4) return + getNthFib(3) return => 2
