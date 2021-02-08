@@ -19,7 +19,15 @@ n = 6;
 5 => 0, 1, 1, 2, 3, 5
 */
 
-// time O (2^n) | space O ()
+/*
+fib(n) = fib(n - 1) + fib(n - 2) for n > 2
+getNthFib(4)
+  getNthFib(3) => returns 1 + getNthFib(2) return => 1   1 + 1 = 2
+   returns |
+           V
+    getNthFib(2) return => 1 + getNthFib(1) returns => 0
+*/
+// time O (2^n) | space O (n)
 const getNthFib = (n) => {
   if (n === 2) {
     return 1;
@@ -29,10 +37,8 @@ const getNthFib = (n) => {
     return getNthFib(n - 1) + getNthFib(n - 2);
   }
 };
-/*
-fib(n) = fib(n - 1) + fib(n - 2) for n > 2
-getNthFib(4)
-  getNthFib(3) return => 2 + getNthFib(2) return => 1
-    getNthFib(2) return => 1 + getNthFib(1) 
-*/
-console.log(getNthFib(4));
+
+const getNthFibMem = () => {
+  // if n is in memoize
+  // return memoize[n]
+};
