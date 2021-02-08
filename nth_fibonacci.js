@@ -19,6 +19,7 @@ n = 6;
 5 => 0, 1, 1, 2, 3, 5
 */
 
+// time O (2^n) | space O ()
 const getNthFib = (n) => {
   if (n === 2) {
     return 1;
@@ -30,10 +31,8 @@ const getNthFib = (n) => {
 };
 /*
 fib(n) = fib(n - 1) + fib(n - 2) for n > 2
-getNthFib(6)
-  getNthFib(5) + getNthFib(4)
-    getNthFib(4) return + getNthFib(3) return => 2
-      getNthFib(3) return => 2 + getNthFib(2) return => 1
-        getNthFib(2) return => 1 + getNthFib(1) return => 0
-          getNthFib(1) return => 0 + getNthFib(0) return => 0
+getNthFib(4)
+  getNthFib(3) return => 2 + getNthFib(2) return => 1
+    getNthFib(2) return => 1 + getNthFib(1) 
 */
+console.log(getNthFib(4));
