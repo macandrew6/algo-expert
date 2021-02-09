@@ -16,20 +16,23 @@ example:
 ....
 */
 
+// time O (n^2) | space O (1)
 const bubbleSort = (array) => {
   // traverse the array
   let isSorted = false;
+  counter = 0;
   // if el1 is greater than el2
   // we swap them
   // check to see if there were any swaps stop running if there are no swaps
   while (!isSorted) {
     isSorted = true;
-    for (let i = 0; i < array.length - 1; i++) {
+    for (let i = 0; i < array.length - 1 - counter; i++) {
       if (array[i] >= array[i + 1]) {
         swap(i, i + 1, array);
         isSorted = false;
       }
     }
+    counter += 1;
   }
   return array;
 };
