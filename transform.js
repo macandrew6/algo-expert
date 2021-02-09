@@ -30,4 +30,4 @@ function transform(arr) {
 
 console.log(transform([20, 10, 15, 35, 5])); // (Array)  [3, 1, 2, 4, 0]
 console.log(transform([1, 2, 3, 5, 4])); // (Array)  [0, 1, 2, 4, 3]
-console.log(transform([1, 2, 3, 5, 5]));
+console.log(transform([1, 2, 3, 5, 5])); // edgecase lives here
