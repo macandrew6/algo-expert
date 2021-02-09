@@ -38,10 +38,38 @@ const getNthFib = (n) => {
   }
 };
 
-const getNthFibMem = () => {
+// time 0 (n) | space O (n)
+const getNthFibMem = (n, memoize = { 1: 0, 2: 1 }) => {
+  if (n in memoize) {
+    return memoize[n];
+  } else {
+    memoize[n] = getNthFibMem(n - 1, memoize) + getNthFibMem(n - 2, memoize);
+    console.log(memoize);
+    return memoize[n];
+  }
   // if n is in memoize
   // return memoize[n]
   // else
   // memoize[n] = fib(n - 1) + fib(n - 2)
   // return memoize[n]
 };
+
+// time O (n) | space O (1)
+const getNthFibIter = (n) => {
+  // init start = [0, 1]
+  let lastTwo = [0, 1];
+  // while counter isn't 0
+  counter = 3;
+  while (counter <= n) {
+    let nextFib = lastTwo[0] + lastTwo[1];
+    lastTwo[0] = lastTwo[1];
+    lastTwo[1] = nextFib;
+    counter += 1;
+  }
+  return n > 1 ? lastTwo[1] : lastTwo[0];
+  // next = start[i] + start[i + 1]
+  // replace start[i] with start[i + 1]
+  // start[i + 1] = next;
+};
+
+console.log(getNthFibIter(2));
