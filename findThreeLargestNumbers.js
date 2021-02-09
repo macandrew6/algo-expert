@@ -10,10 +10,22 @@ array = [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7]
 output => [18, 141, 541]
 */
 
+// time O (n) | space O (1)
 const findThreeLargestNumbers = (array) => {
-  //init [null, null, null];
+  //init result = [null, null, null];
   //keep track and store the three largest numbers
-  //update
+  //update backwards from the result array
+  const threeLargest = [null, null, null];
+  array.forEach((num) => {
+    updateLargest(threeLargest, num);
+  });
+  return threeLargest;
+};
+
+const updateLargest = (threeLargest, num) => {
+  if (threeLargest[2] === null || num > threeLargest[2]) {
+    shiftAndUpdate(); // todo
+  }
 };
 
 console.log(
