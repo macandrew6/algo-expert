@@ -12,4 +12,17 @@ not the most performant sorting algo,
 but easy to understand and easy to implement
 */
 
-const insertionSort = (array) => {};
+const insertionSort = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    let j = i;
+    while (j > 0 && array[j] < array[j - 1]) {
+      swap(j, j - 1, array);
+      j--;
+    }
+  }
+  return array;
+};
+
+const swap = (idx1, idx2, array) => {
+  [array[idx1], array[idx2]] = [array[idx2], array[idx1]];
+};
