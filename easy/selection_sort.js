@@ -9,9 +9,6 @@ array = [8, 5, 2, 9, 5, 6, 3]
 
 not the most performant
 happens in place in the array
-dividing it into two seperate lists within that list
-one sublist with sorted numbers
-one sublist with unsorted numbers
 
 iterate through the unsorted list numerous times
 */
@@ -22,6 +19,8 @@ iterate through the unsorted list numerous times
 // currentIdx = 2
 // i = 6
 // array[i] = 9
+//          |     |
+//          V     V
 // array = [2, 5, 8, 9, 5, 6, 3]
 // array = [8, 3, 2, 9, 5, 6, 5]
 

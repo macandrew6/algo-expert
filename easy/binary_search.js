@@ -15,8 +15,6 @@ returns => 3 (index)
 
 // time O (log(n)) | space O(log(n))
 const binarySearch = (array, target) => {
-  // left pointer
-  // right pointer
   return helper(array, target, 0, array.length - 1);
 };
 
