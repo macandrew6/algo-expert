@@ -15,6 +15,7 @@ key = 2
 output = "zab"
 */
 
+// time O (n) | space O (n)
 const caesarCipherEncryptor = (string, key) => {
   let alpha = 'abcdefghijklmnopqrstuvwxyz';
   let alphaArr = alpha.split('');
@@ -28,4 +29,4 @@ const caesarCipherEncryptor = (string, key) => {
   return result;
 };
 
-console.log(caesarCipherEncryptor('xyz', 26));
+console.log(caesarCipherEncryptor('xyz', 457));
