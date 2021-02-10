@@ -22,9 +22,7 @@ const caesarCipherEncryptor = (string, key) => {
   for (let i = 0; i < string.length; i++) {
     let targetLetterIdx = alphaArr.indexOf(string[i]);
     let cipherLetterIdx = targetLetterIdx + key;
-    if (cipherLetterIdx > 25) {
-      cipherLetterIdx = cipherLetterIdx % 26;
-    }
+    cipherLetterIdx = cipherLetterIdx % 26;
     result += alphaArr[cipherLetterIdx];
   }
   return result;
