@@ -30,7 +30,8 @@ output: true
 
 // [1, 3, 4, 5, 8]
 // [2, 4, 5, 6, 9]
-const classPhotos = (redShirtHeights, blueShirtHeights) => {
+// time O (n(log(n))) | space O (n)
+const classPhotosNaive = (redShirtHeights, blueShirtHeights) => {
   // strat 1
   // sort both arrays
   let sortedRedShirtsHeights = redShirtHeights.sort();
@@ -40,18 +41,12 @@ const classPhotos = (redShirtHeights, blueShirtHeights) => {
     // if the 1st element of the first array is greater than the first element of the second array
     if (sortedRedShirtsHeights[0] >= sortedBlueShirtsHeights[0]) {
       // check to see if each element of the first array is greater than element of the other array
-      if (
-        sortedRedShirtsHeights[i] < sortedBlueShirtsHeights[i] ||
-        sortedRedShirtsHeights[i] === sortedBlueShirtsHeights[i]
-      ) {
+      if (sortedRedShirtsHeights[i] <= sortedBlueShirtsHeights[i]) {
         return false;
       }
-    } else if (sortedRedShirtsHeights[0] <= sortedBlueShirtsHeights[0]) {
+    } else {
       // if the 1st element of the first array is less than the first element of the second array
-      if (
-        sortedRedShirtsHeights[i] > sortedBlueShirtsHeights[i] ||
-        sortedRedShirtsHeights[i] === sortedBlueShirtsHeights[i]
-      ) {
+      if (sortedRedShirtsHeights[i] >= sortedBlueShirtsHeights[i]) {
         // check to see if each element of the first array is less than element of the other array
         return false;
       }
@@ -60,6 +55,26 @@ const classPhotos = (redShirtHeights, blueShirtHeights) => {
   return true;
 };
 
+// greedy algorithm
+// time O (n(log(n))) | space O (1)
+const classPhotos = (redShirtHeights, blueShirtHeights) => {
+  // sort in place
+  redShirtHeights.sort();
+  blueShirtHeights.sort();
+  for (let i = 0; i < redShirtHeights.length; i++) {
+    if (redShirtsHeights[0] >= blueShirtsHeights[0]) {
+      if (redShirtsHeights[i] <= blueShirtsHeights[i]) {
+        return false;
+      }
+    } else {
+      if (redShirtsHeights[i] >= blueShirtsHeights[i]) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
 let redShirtHeights = [5, 8, 1, 3, 4];
-let blueShirtHeights = [6, 9, 2, 4, 5];
+let blueShirtHeights = [1, 1, 1, 1, 1];
 console.log(classPhotos(redShirtHeights, blueShirtHeights));
