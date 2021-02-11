@@ -35,20 +35,21 @@ class LinkedList {
     }
     curr.next = node;
   }
-
+  // a -> b -> c -> d
+  // d -> c -> b -> a
   reverseLinkedList(head) {
-    let curr = head;
-    let prev = null;
+    let curr = head; // d
+    let prev = null; // c
     while (true) {
-      let tempCurr = curr.next;
+      let tempCurr = curr.next; // null
 
-      curr.next = prev;
+      curr.next = prev; // null = c
 
-      prev = curr;
+      prev = curr; // c = d
 
       if (!tempCurr) break;
 
-      curr = tempCurr;
+      curr = tempCurr; // c = d
     }
     return curr;
   }
