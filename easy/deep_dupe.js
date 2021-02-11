@@ -29,5 +29,19 @@ const deepDup = (array) => {
   // return the dup array
 };
 
+const deepCopyObject = (obj) => {
+  const objDup = {};
+  for (let [key, value] of Object.entries(obj)) {
+    if (Array.isArray(value)) {
+      objDup[key] = deepDup(value);
+    } else if (typeof value === 'object') {
+      objDup[key] = deepCopyObject(value);
+    } else {
+      objDup[key] = value;
+    }
+  }
+  return objDup;
+};
+
 let array = [1, 2, [3, 4, [5, 6]], 7];
 console.log(deepDup(array));
