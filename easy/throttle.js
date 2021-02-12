@@ -6,18 +6,19 @@ further execution until the end of the duration of the time input.
 */
 
 Function.prototype.myThrottle = (interval) => {
-  let tooSoon = false; // true
-  return (...args) => {
-    // the function only get invoded if tooSoon is false
-    // it sets tooSoon to true, and uses setTimeout to set it back to
-    // false after interval ms
-    // any invocation within this interval will skip the if statement
-    // and do nothing
-    if (!tooSoon) {
-      tooSoon = true;
-      setTimeout(() => (tooSoon = false), interval); // runs this returns aysnc
-      this(...args); // runs this with args
-      // finishes line 18
+  let flag = false;
+  // the function only get invoded if tooSoon is false
+  // it sets tooSoon to true, and uses setTimeout to set it back to
+  // false after interval ms
+  // any invocation within this interval will skip the if statement
+  // and do nothing
+  return (...arrs) => {
+    if (!flag) {
+      flag = true;
+      setTimeout(() => {
+        flag = false;
+      }, interval);
+      this(...arrs);
     }
   };
 };
