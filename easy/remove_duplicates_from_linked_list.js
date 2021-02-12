@@ -24,18 +24,13 @@ function removeDuplicatesFromLinkedList(linkedList) {
   let curr = linkedList; // see if this can be const
   // while curr.next
   while (curr) {
-    let distinctValue = curr.next;
+    let distinctNode = curr.next;
     // check to see if current value === the last element of the arr
-    while (distinctValue !== null && curr.value === distinctValue.value) {
-      distinctValue = distinctValue.next;
+    while (distinctNode !== null && curr.value === distinctNode.value) {
+      distinctNode = distinctNode.next;
     }
-    curr.next = distinctValue;
-    curr = distinctValue;
+    curr.next = distinctNode;
+    curr = distinctNode;
   }
   return linkedList;
 }
-
-const remove = (curr) => {
-  // make prev.next = curr.next;
-  curr = curr.next;
-};
