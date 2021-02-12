@@ -15,24 +15,32 @@ change
 coins = [5, 7, 1, 1, 2, 3, 22]
         [1, 1, 2, 3, 5, 7, 22]
             ^
+
 output = 20
 */
 
+// time O (n (log(n))) | space O(1)
 const nonConstructibleChange = (coins) => {
   // sort the list
-  coins.sort((a, b) => (a < b ? -1 : 1));
-  // init change variable
-  let change = coins[0];
-  if (coins.length === 1) {
-    return 1;
-  }
-  for (let i = 1; i < coins.length; i++) {
-    if (change + 1 < coins[i]) {
+  coins.sort((a, b) => (a < b ? -1 : 1)); // n
+  let change = 0;
+  for (let i = 0; i < coins.length; i++) {
+    let coin = coins[i];
+    if (change + 1 < coin) {
       return change + 1;
     } else {
-      change += coins[i];
+      change += coin;
     }
   }
+  return change + 1;
 };
 
-console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22]));
+// genius test case
+let arr1 = [1, 1, 2]; // <- edge case
+// change = 2 value = 2 i = 1
+// is value > change + 1
+let arr2 = [1, 1, 3];
+let arr3 = [5, 7, 1, 1, 2, 3, 22];
+let arr4 = [1, 1, 1, 1, 1];
+
+console.log(nonConstructibleChange([88]));
