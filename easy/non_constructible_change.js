@@ -11,12 +11,28 @@ can't creatre is 4. If you're given no coins, the minimum amount of change that 
 create is 1.
 
 example:
+change
 coins = [5, 7, 1, 1, 2, 3, 22]
+        [1, 1, 2, 3, 5, 7, 22]
+            ^
 output = 20
 */
 
 const nonConstructibleChange = (coins) => {
-  return 1;
+  // sort the list
+  coins.sort((a, b) => (a < b ? -1 : 1));
+  // init change variable
+  let change = coins[0];
+  if (coins.length === 1) {
+    return 1;
+  }
+  for (let i = 1; i < coins.length; i++) {
+    if (change + 1 < coins[i]) {
+      return change + 1;
+    } else {
+      change += coins[i];
+    }
+  }
 };
 
 console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22]));
