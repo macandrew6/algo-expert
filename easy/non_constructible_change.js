@@ -14,3 +14,9 @@ example:
 coins = [5, 7, 1, 1, 2, 3, 22]
 output = 20
 */
+
+const nonConstructibleChange = (coins) => {
+  return 1;
+};
+
+console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22]));
