@@ -18,11 +18,34 @@ characters) should be encoded in a split fashion; the aforementioned run should 
 encoded as "9A3A"
 
 Example:
+                             |
+                             V  
 string: "AAAAAAAAAAAAABBCCCCDD"
-output: "9A4A2B4C2D"
+output:"9A4A2B4C2D"
+i = 15
+count = 2
+res = ['9', 'A', '4', 'A', '2', 'B', '4', 'C', '2', 'D']
 */
 
-const runLengthEncoding = (string) => {};
+const runLengthEncoding = (string) => {
+  let result = [];
+  let count = 1;
+  // iterate the string
+  for (let i = 1; i < string.length; i++) {
+    let current = string[i];
+    let previous = string[i - 1];
+    if (count === 9 || previous !== current) {
+      result.push(count.toString());
+      result.push(previous);
+      count = 0;
+    }
+    count += 1;
+  }
+  result.push(count.toString());
+  result.push(string[string.length - 1]);
 
-let string = 'AAAAAAAAAAAAA';
-console.log(runLenthEncoding(string));
+  return result.join('');
+};
+
+let string = 'AAAAAAAAAAAAABBCCCCDD';
+console.log(runLengthEncoding(string));
