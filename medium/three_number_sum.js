@@ -48,8 +48,6 @@ const threeNumberSum = (array, targetSum) => {
   return result;
 };
 
-const threeNumberSumRefactor = (array, target) => {};
-
 const sum = (a, b, c) => a + b + c;
 
 let array = [12, 3, 1, 2, -6, 5, -8, 6];
