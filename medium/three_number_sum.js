@@ -27,6 +27,7 @@ k = i + 1;
 */
 
 const threeNumberSum = (array, targetSum) => {
+  array.sort((a, b) => a - b);
   let result = [];
   for (let i = 0; i < array.length; i++) {
     let current = array[i];
