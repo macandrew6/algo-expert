@@ -30,5 +30,66 @@ class MaxHeap {
     return idx * 2 + 1;
   }
 
-  insert() {}
+  insert(value) {
+    this.array.push(value);
+    this.siftUp(this.array.length - 1);
+  }
+
+  siftUp(idx) {
+    if (idx === 1) return;
+    let parentIdx = this.getParent(idx);
+
+    if (this.array[parentIdx] < this.array[idx]) {
+      [this.array[parentIdx], this.array[idx]] = [
+        this.array[idx],
+        this.array[parentIdx],
+      ];
+      this.siftUp(parentIdx);
+    }
+  }
+
+  deleteMax() {
+    let max = this.array[1];
+
+    if (this.array.length === 2) return this.array.pop();
+    if (this.array.length === 1) return null;
+
+    this.array[1] = this.array.pop();
+    this.siftDown(1);
+    return max;
+  }
+
+  siftDown(idx) {
+    let current = this.array[idx];
+    let leftChildIdx = this.getLeftChild(idx);
+    let rightChildIdx = this.getRightChild(idx);
+    let leftValue = this.array[leftChildIdx];
+    let rightValue = this.array[rightChildIdx];
+    let targetChildIdx;
+
+    if (leftValue === undefined) leftValue = -Infinity;
+    if (rightValue === undefined) rightValue = -Infinity;
+
+    if (leftValue < current && rightValue < current) return;
+
+    if (leftValue > rightValue) {
+      targetChildIdx = leftChildIdx;
+    } else {
+      targetChildIdx = rightChildIdx;
+    }
+    [this.array[idx], this.array[targetChildIdx]] = [
+      this.array[targetChildIdx],
+      this.array[idx],
+    ];
+    this.siftDown(targetChildIdx);
+  }
 }
+
+let maxHeap = new MaxHeap();
+maxHeap.insert(29);
+maxHeap.insert(50);
+maxHeap.insert(100);
+maxHeap.insert(36);
+maxHeap.deleteMax();
+maxHeap.deleteMax();
+console.log(maxHeap);
