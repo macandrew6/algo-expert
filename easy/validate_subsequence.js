@@ -32,6 +32,8 @@ if true, then we can move onto the next element of our sequence
 if it reaches the end of the list and there are still elements in the sequence return false
 if we are at the end of our sequence return true
 */
+
+// time : O (n) | space : O (1)
 const isValidSubsequence = (array, sequence) => {
   let sequenceIndex = 0;
   for (let i = 0; i < array.length; i++) {
