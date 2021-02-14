@@ -26,9 +26,9 @@ sub = [-8, 2, 6]
 
 // time = O (n^2) | space = O (n)
 const threeNumberSum = (array, targetSum) => {
-  array.sort((a, b) => a - b);
   let result = [];
-  for (let i = 0; i < array.length; i++) {
+  array.sort((a, b) => a - b);
+  for (let i = 0; i < array.length - 2; i++) {
     let current = array[i];
     let left = i + 1;
     let right = array.length - 1;
@@ -41,11 +41,14 @@ const threeNumberSum = (array, targetSum) => {
       } else {
         result.push([current, array[left], array[right]]);
         left++;
+        right--;
       }
     }
   }
   return result;
 };
+
+const threeNumberSumRefactor = (array, target) => {};
 
 const sum = (a, b, c) => a + b + c;
 
