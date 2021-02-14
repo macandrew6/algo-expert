@@ -30,9 +30,11 @@ x[i] < y[i] move x pointer
 x[i] > y[i] move y pointer
 */
 
+// time: O (n) => space: O (n)
 const smallestDifference = (arrayOne, arrayTwo) => {
   arrayOne.sort((a, b) => a - b);
   arrayTwo.sort((a, b) => a - b);
+  // building this hash is O n space
   let hash = {};
   let smallestDifference = Math.abs(arrayOne[0] - arrayTwo[0]);
   let arrayOneIdx = 0;
@@ -54,12 +56,44 @@ const smallestDifference = (arrayOne, arrayTwo) => {
     }
   }
   let smallestKey = Infinity;
+  // for..in loop is an O(n) operation
   for (let key in hash) {
     if (key < smallestKey) {
       smallestKey = Number(key);
     }
   }
   return hash[smallestKey];
+};
+
+// better time and space complexity
+// time: O (n(log(n)) + m(log(m))) => where n is the length of array one and m is the length of array two
+// space: O (1)
+const smallestDifferenceRefactor = (arrayOne, arrayTwo) => {
+  // O (n(log(n)) operation
+  arrayOne.sort((a, b) => a - b);
+  // O (m(log(m)) operation
+  arrayTwo.sort((a, b) => a - b);
+
+  let smallestDiff = Math.abs(arrayOne[0] - arrayTwo[0]);
+  let bestPair = [];
+  let arrOneIdx = 0;
+  let arrTwoIdx = 0;
+
+  while (arrOneIdx < arrayOne.length && arrTwoIdx < arrayTwo.length) {
+    let currentDiff = Math.abs(arrayOne[arrOneIdx] - arrayTwo[arrTwoIdx]);
+    if (currentDiff < smallestDiff) {
+      smallestDiff = currentDiff;
+      bestPair = [arrayOne[arrOneIdx], arrayTwo[arrTwoIdx]];
+    }
+    if (arrayOne[arrOneIdx] < arrayTwo[arrTwoIdx]) {
+      arrOneIdx++;
+    } else if (arrayOne[arrOneIdx] > arrayTwo[arrTwoIdx]) {
+      arrTwoIdx++;
+    } else {
+      return [arrayOne[arrOneIdx], arrayTwo[arrTwoIdx]];
+    }
+  }
+  return bestPair;
 };
 
 let arrayOne = [-1, 5, 10, 20, 28, 3];
