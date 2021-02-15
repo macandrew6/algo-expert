@@ -13,17 +13,11 @@ toMove = 2
 */
 
 /*
-[4, 3, 2, 1, 2]
-       V  
-[1, 4, 3, 2, 2] target = 2
-          ^
-frontPointer
-backPointer
-while frontPointer < backPointer
-array[frontPointer] === target
-  swap
-  frontPointer++
-  backPointer--
+ V  
+[4, 1, 2, 2, 2, 3, 2, 2] target = 2
+                   ^ 
+i = 0
+j = end
 */
 
 // time O(n(log(n))) | space O(1)
@@ -47,7 +41,23 @@ const swap = (array, i, j) => {
   [array[i], array[j]] = [array[j], array[i]];
 };
 
-let array = [2, 2, 2, 1, 2];
+// time O(n) | space O(1)
+const moveElementToEndRefactor = (array, toMove) => {
+  let front = 0;
+  let back = array.length - 1;
+  while (front < back) {
+    while (front < back && array[back] === toMove) {
+      back--;
+    }
+    if (array[front] === toMove) {
+      swap(array, front, back);
+    }
+    front++;
+  }
+  return array;
+};
+
+let array = [2, 1, 2, 2, 2, 3, 4, 2];
 let toMove = 2;
 
-console.log(moveElementToEnd(array, toMove));
+console.log(moveElementToEndRefactor(array, toMove));
