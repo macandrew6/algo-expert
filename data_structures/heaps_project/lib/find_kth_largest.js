@@ -11,3 +11,9 @@ output: 5
 input: [3, 2, 3, 1, 2, 4, 5, 5, 6] and k = 4;
 output: 4
 */
+
+const findKthLargest = (nums, k) => {};
+
+let nums = [3, 2, 1, 5, 6, 4];
+let k = 2;
+console.log(findKthLargest(nums, k));
