@@ -83,31 +83,6 @@ class MaxHeap {
     ];
     this.siftDown(targetChildIdx);
   }
-
-  swap(i, j) {
-    let array = this.array;
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-
-  heapify(n, i) {
-    let leftIdx = this.getLeftChild(i);
-    let rightIdx = this.getRightChild(i);
-    let leftVal = this.array[leftIdx];
-    let rightVal = this.array[rightIdx];
-    let current = array[i];
-
-    if (leftIdx >= n) leftVal = -Infinity;
-    if (rightIdx >= n) rightVal = -Infinity;
-
-    if (current > leftVal && current > rightVal) return;
-
-    let swapIdx;
-    if (leftVal < rightVal) {
-      swapIdx = rightVal;
-    } else {
-      swapIdx = leftVal;
-    }
-  }
 }
 
 let maxHeap = new MaxHeap();
