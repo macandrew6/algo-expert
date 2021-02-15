@@ -20,7 +20,7 @@ result = [28, 26]
 /*
 (both sorted)
             V
-[10, 20, 28] = x
+[-1, 3, 5, 10, 20, 28] = x
 [15, 17, 26, 134, 135] = y
               ^
 init smallestDifference = 5 -> 3 -> 2
@@ -68,26 +68,26 @@ const smallestDifference = (arrayOne, arrayTwo) => {
 // better time and space complexity
 // time: O (n(log(n)) + m(log(m))) => where n is the length of array one and m is the length of array two
 // space: O (1)
-const smallestDifferenceRefactor = (arrayOne, arrayTwo) => {
+const largestDifferenceRefactor = (arrayOne, arrayTwo) => {
   // O (n(log(n)) operation
   arrayOne.sort((a, b) => a - b);
   // O (m(log(m)) operation
   arrayTwo.sort((a, b) => a - b);
 
-  let smallestDiff = Math.abs(arrayOne[0] - arrayTwo[0]);
+  let largestDiff = Math.abs(arrayOne[0] - arrayTwo[0]);
   let bestPair = [];
   let arrOneIdx = 0;
   let arrTwoIdx = 0;
 
   while (arrOneIdx < arrayOne.length && arrTwoIdx < arrayTwo.length) {
     let currentDiff = Math.abs(arrayOne[arrOneIdx] - arrayTwo[arrTwoIdx]);
-    if (currentDiff < smallestDiff) {
-      smallestDiff = currentDiff;
+    if (currentDiff > largestDiff) {
+      largestDiff = currentDiff;
       bestPair = [arrayOne[arrOneIdx], arrayTwo[arrTwoIdx]];
     }
-    if (arrayOne[arrOneIdx] < arrayTwo[arrTwoIdx]) {
+    if (arrayOne[arrOneIdx] > arrayTwo[arrTwoIdx]) {
       arrOneIdx++;
-    } else if (arrayOne[arrOneIdx] > arrayTwo[arrTwoIdx]) {
+    } else if (arrayOne[arrOneIdx] < arrayTwo[arrTwoIdx]) {
       arrTwoIdx++;
     } else {
       return [arrayOne[arrOneIdx], arrayTwo[arrTwoIdx]];
@@ -99,4 +99,4 @@ const smallestDifferenceRefactor = (arrayOne, arrayTwo) => {
 let arrayOne = [-1, 5, 10, 20, 28, 3];
 let arrayTwo = [26, 134, 135, 15, 17];
 
-console.log(smallestDifference(arrayOne, arrayTwo));
+console.log(largestDifferenceRefactor(arrayOne, arrayTwo));
