@@ -33,28 +33,16 @@ height = array.length;
 
 */
 
-const spiralTraverse = (array) => {
-  let result = [];
-  let i = 0;
-  let j = 0;
-  let length = array[0].length - 1;
-  let height = array.length;
-  while (array.length) {
-    while (j < array[i].length) {
-      j++;
-      if (j === 0) {
-        i--;
-      }
-      result.push(array[i][j].shift());
-    }
-    i++;
-    if (i === height) {
-      j--;
-    }
-    result.push(array[i][j].pop());
-  }
-  return result;
-};
+const spiralTraverse = (array) => {};
+/*
+array = [
+  [1,   2,  3, 4],
+  [12, 13, 14, 5],
+  [11, 16, 15, 6],
+  [10,  9,  8, 7]
+               ^
+]
+*/
 
 let array = [
   [1, 2, 3, 4],
