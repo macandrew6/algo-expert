@@ -22,13 +22,44 @@ currentDirection = el
 next = el @ i + 1
 */
 
-const isMonotonic = (array) => {
+const isMonotonicRefactor = (array) => {
   let direction = 0;
-  for (let i = 0; i < array.length; i++) {
-    let current = array[i];
-    let next = array[i + 1];
+  if (array[0] < array[array.length - 1]) {
+    direction = 1;
+  } else if (array[0] > array[array.length - 1]) {
+    direction = -1;
+  } else {
+    direction = 0;
+  }
+  for (let i = 1; i < array.length; i++) {
+    let curr = array[i];
+    let prev = array[i - 1];
+    if (curr >= prev) {
+      continue;
+    } else {
+      return false;
+    }
   }
 };
 
-let array = [-1, -5, -10, -1100, -1100, -1101, -1102, -9001];
+// [-1, -5, -10, -1100, -1100, -1101, -1102, -9001]
+const isMonotonic = (array) => {
+  let isNonDecreasing = true;
+  let isNonIncreasing = true;
+
+  for (let i = 1; i < array.length; i++) {
+    let curr = array[i];
+    let prev = array[i - 1];
+    if (curr < prev) {
+      isNonDecreasing = false;
+    }
+    if (curr > prev) {
+      isNonIncreasing = false;
+    }
+  }
+
+  return isNonDecreasing || isNonIncreasing;
+};
+
+let array = [-1, -5, -10, -1100, -100, -1101, -1102, -9001];
 console.log(isMonotonic(array));
