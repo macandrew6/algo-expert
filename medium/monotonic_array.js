@@ -23,26 +23,36 @@ next = el @ i + 1
 */
 
 const isMonotonicRefactor = (array) => {
-  let direction = 0;
-  if (array[0] < array[array.length - 1]) {
-    direction = 1;
-  } else if (array[0] > array[array.length - 1]) {
-    direction = -1;
-  } else {
-    direction = 0;
+  if (array.length <= 2) {
+    return true;
   }
-  for (let i = 1; i < array.length; i++) {
-    let curr = array[i];
-    let prev = array[i - 1];
-    if (curr >= prev) {
+
+  let direction = array[1] - array[0];
+  for (let i = 2; i < array.length; i++) {
+    if (direction === 0) {
+      direction = array[i] - array[i - 1];
       continue;
-    } else {
+    }
+    if (breaksDirection(direction, array[i - 1], array[i])) {
       return false;
     }
   }
+  return true;
 };
 
-// [-1, -5, -10, -1100, -1100, -1101, -1102, -9001]
+const breaksDirection = (direction, previousInt, currentInt) => {
+  let difference = currentInt - previousInt;
+  if (direction > 0) {
+    return difference < 0;
+  }
+  return difference > 0;
+};
+
+//       P    C
+// [-1, -5, -10, -1100, 1, -1101, -1102, -9001]
+// curr = -10
+// prev = -5
+// time : O(n) | space O(1)
 const isMonotonic = (array) => {
   let isNonDecreasing = true;
   let isNonIncreasing = true;
