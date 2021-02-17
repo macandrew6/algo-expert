@@ -47,9 +47,11 @@ const spiralTraverse = (array) => {
       result.push(array[row][endCol]);
     }
     for (let col = endCol - 1; col >= startCol; col--) {
+      if (startCol === endCol) break;
       result.push(array[endRow][col]);
     }
     for (let row = endRow - 1; row > startRow; row--) {
+      if (startRow === endRow) break;
       result.push(array[row][startCol]);
     }
     startRow++;
@@ -69,11 +71,17 @@ er  [10,  9,  8, 7]
                ^
 ]
 */
-
+let array2 = [
+  [1, 2, 3],
+  [12, 13, 4],
+  [11, 14, 5],
+  [10, 15, 6],
+  [9, 8, 7],
+];
 let array = [
   [1, 2, 3, 4],
   [12, 13, 14, 5],
   [11, 16, 15, 6],
   [10, 9, 8, 7],
 ];
-console.log(spiralTraverse(array));
+console.log(spiralTraverse(array2));
