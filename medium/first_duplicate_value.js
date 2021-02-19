@@ -13,6 +13,7 @@ If no integer appears more than once, your function should return -1
 Note you're allowed to mutate the input array.
 */
 
+// time: O(n) | space: O(n)
 const firstDuplicateValue = (array) => {
   let hash = { [array[0]]: 0 };
   for (let i = 1; i < array.length; i++) {
