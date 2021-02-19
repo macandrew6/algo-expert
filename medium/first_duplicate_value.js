@@ -15,8 +15,8 @@ Note you're allowed to mutate the input array.
 
 // time: O(n) | space: O(n)
 const firstDuplicateValue = (array) => {
-  let hash = { [array[0]]: 0 };
-  for (let i = 1; i < array.length; i++) {
+  let hash = {};
+  for (let i = 0; i < array.length; i++) {
     if (hash.hasOwnProperty(array[i])) {
       return array[i];
     } else {
@@ -25,6 +25,12 @@ const firstDuplicateValue = (array) => {
   }
   return -1;
 };
+
+// time: O(n) | space: O(1)
+const firstDuplicateValueRefactor = (array) => {
+  for (let i = 0; i < array.length; i++) {}
+};
+
 //                    V
-let array = [2, 1, 5, 2, 3, 3, 4];
-console.log(firstDuplicateValue(array));
+let array = [2, 1, 5, 3, 3, 2, 4];
+console.log(firstDuplicateValueRefactor(array));
