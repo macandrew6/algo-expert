@@ -18,28 +18,43 @@ result = [8, 40, 10, 20]
 result = [8]
 */
 
+// time : O(n) | space : O(n) n <= is the number of elements in the input
 const arrayOfProducts = (array) => {
-  let result = [];
+  let result = new Array(array.length).fill(1);
+  // init left running product
+  // init right running product
+  let leftProducts = new Array(array.length).fill(1);
+  let rightProducts = new Array(array.length).fill(1);
+  let leftRunningProduct = 1;
+  let rightRunningProduct = 1;
   for (let i = 0; i < array.length; i++) {
-    let left = i - 1;
-    let right = i + 1;
-    let product = 1;
-    while (left >= 0 || right < array.length) {
-      if (array[right] && right <= array.length) {
-        product *= array[right];
-      }
-      if (left >= 0 && array[left]) {
-        product *= array[left];
-      }
-
-      left--;
-      right++;
-    }
-    result.push(product);
-    product = 1;
+    leftProducts[i] = leftRunningProduct;
+    leftRunningProduct *= array[i];
   }
-  return result;
+  for (let j = array.length - 1; j >= 0; j--) {
+    rightProducts[j] = rightRunningProduct;
+    rightRunningProduct *= array[j];
+  }
+  return result.map((el, idx) => {
+    console.log(leftProducts[idx], rightProducts[idx]);
+    return leftProducts[idx] * rightProducts[idx];
+  });
 };
 
-let array = [5, 1, 4, 0];
+// time : O(n) | space : O(n)
+const arrayOfProductsRefactor = (array) => {
+  let result = new Array(array.length).fill(1);
+  let leftRunningProduct = 1;
+  let rightRunningProduct = 1;
+  for (let i = 0; i < array.length; i++) {
+    result[i] = leftRunningProduct;
+    leftRunningProduct *= array[i];
+  }
+  for (let j = array.length - 1; j >= 0; j--) {
+    result[j] *= rightRunningProduct;
+    rightRunningProduct *= array[j];
+  }
+};
+
+let array = [5, 1, 4, 2];
 console.log(arrayOfProducts(array));
