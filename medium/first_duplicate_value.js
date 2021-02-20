@@ -28,9 +28,19 @@ const firstDuplicateValue = (array) => {
 
 // time: O(n) | space: O(1)
 const firstDuplicateValueRefactor = (array) => {
-  for (let i = 0; i < array.length; i++) {}
+  // map the value to indicies
+  for (let i = 0; i < array.length; i++) {
+    let value = array[i];
+    // check to see if the index value is already negative
+    if (array[Math.abs(value) - 1] < 0) {
+      return Math.abs(value);
+    }
+    array[Math.abs(value) - 1] *= -1;
+  }
+  return -1;
 };
-
-//                    V
+//              V
+// [5, 1, 3, 2, 5, 3]
+// -5 -1 -3    -5
 let array = [2, 1, 5, 3, 3, 2, 4];
 console.log(firstDuplicateValueRefactor(array));
