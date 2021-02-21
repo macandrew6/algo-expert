@@ -86,6 +86,16 @@ class BST {
 
   remove(value) {
 		// find the node with the value
+    let current = this;
+    while (current.left !== null || current.right !== null) {
+			if (value < current.value) {
+				current = current.left;
+			} else if (value > current.value) {
+				current = current.right;
+			}	else {
+        
+			}
+		}
 		// remove node with value
 		// swap node with the lowest tree node
     return this;
