@@ -40,7 +40,7 @@ const firstDuplicateValueRefactor = (array) => {
   return -1;
 };
 //              V
-// [5, 1, 3, 2, 5, 3]
-// -5 -1 -3    -5
+// [2, 1, 5, 3, 3, 2, 4] => returns 3
+// -2 -1 -5    -3
 let array = [2, 1, 5, 3, 3, 2, 4];
 console.log(firstDuplicateValueRefactor(array));
