@@ -45,14 +45,15 @@ const sumOfLinkedList = (l1, l2) => {
         .map((el) => el.toString())
         .join('')
     );
-  console.log(sum);
-  sum.toString().split('');
-  let length = sum.length;
-  let idx = 0;
-  let result = new LinkedList(Number(sum[0]));
-  while (idx < length) {
-    result.next;
+  sum = sum.toString().split('');
+  let head = new LinkedList(Number(sum[0]));
+  let temp = head;
+  for (let i = 1; i < sum.length; i++) {
+    let value = Number(sum[i]);
+    temp.next = new LinkedList(value);
+    temp = temp.next;
   }
+  return head;
 };
 
 let l1 = new LinkedList(4);
