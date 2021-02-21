@@ -48,3 +48,48 @@ sample usage:
 
   contains(15): true
 */
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+		let current = this;
+		while (current.left !== null || current.right !== null) {
+			if (value < current.value) {
+				current = current.left;
+			} else if (value > current.value) {
+				current = current.right;
+			}	
+		}
+		current = new BST(value);
+    return this;
+  }
+
+  contains(value) {
+    // Write your code here.
+		let current = this;
+		while (current.left !== null || current.right !== null) {
+			if (value < current.value) {
+				current = current.left;
+			} else if (value > current.value) {
+				current = current.right;
+			}	else {
+				return true;
+			}
+		}
+		return false;
+  }
+
+  remove(value) {
+		// find the node with the value
+		// remove node with value
+		// swap node with the lowest tree node
+    return this;
+  }
+}
+
+let bst = new BST(10);
