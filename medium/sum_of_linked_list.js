@@ -45,7 +45,7 @@ const sumOfLinkedList = (l1, l2) => {
         .map((el) => el.toString())
         .join('')
     );
-  sum = sum.toString().split('');
+  sum = sum.toString().split('').reverse();
   let head = new LinkedList(Number(sum[0]));
   let temp = head;
   for (let i = 1; i < sum.length; i++) {
@@ -56,12 +56,14 @@ const sumOfLinkedList = (l1, l2) => {
   return head;
 };
 
-let l1 = new LinkedList(4);
-l1.next = new LinkedList(9);
+const sumOfLinkedListRefac = (linkedListOne, linkedListTwo) => {};
+
+let l1 = new LinkedList(9);
+l1.next = new LinkedList(4);
 l1.next.next = new LinkedList(5);
 let l2 = new LinkedList(2);
-l2.next = new LinkedList(3);
-l2.next.next = new LinkedList(4);
-l2.next.next.next = new LinkedList(7);
+l2.next = new LinkedList(4);
+l2.next.next = new LinkedList(7);
+l2.next.next.next = new LinkedList(1);
 
 console.log(sumOfLinkedList(l1, l2));

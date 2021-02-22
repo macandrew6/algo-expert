@@ -11,13 +11,8 @@ example:
 array = [2, 1, 2, 2, 2, 3, 4, 2]
 toMove = 2
 */
-
 /*
- V  
-[4, 1, 2, 2, 2, 3, 2, 2] target = 2
-                   ^ 
-i = 0
-j = end
+[2, 1, 2, 2, 2, 3, 4, 2]
 */
 
 // time O(n(log(n))) | space O(1)
@@ -56,6 +51,14 @@ const moveElementToEndRefactor = (array, toMove) => {
   }
   return array;
 };
+
+/*
+          V  
+[4, 1, 3, 2, 2, 2, 2, 2] target = 2
+        ^ 
+i = 0
+j = end
+*/
 
 let array = [2, 1, 2, 2, 2, 3, 4, 2];
 let toMove = 2;
