@@ -56,39 +56,93 @@ class BST {
     this.right = null;
   }
 
+  // time: O(log(n)) | space: O(1)
   insert(value) {
-		let current = this;
-		while (current.left !== null || current.right !== null) {
-			if (value < current.value) {
-				current = current.left;
-			} else if (value > current.value) {
-				current = current.right;
-			}	
-		}
-		current = new BST(value);
+    let current = this;
+    while (true) {
+      if (value < current.value) {
+        if (current.left === null) {
+          current.left = new BST(value);
+          break;
+        }
+        current = current.left;
+      } else {
+        if (current.right === null) {
+          current.right = new BST(value);
+          break;
+        }
+        current = current.right;
+      }
+    }
     return this;
   }
 
+  // time: O(log(n)) | space: O(1)
   contains(value) {
     // Write your code here.
-		let current = this;
-		while (current.left !== null || current.right !== null) {
-			if (value < current.value) {
-				current = current.left;
-			} else if (value > current.value) {
-				current = current.right;
-			}	else {
-				return true;
-			}
-		}
-		return false;
+    let current = this;
+    while (current !== null) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
 
-  remove(value) {
-		// find the node with the value
-		// remove node with value
-		// swap node with the lowest tree node
+  // time: O(log(n)) | space: O(1)
+  remove(value, parentNode = null) {
+    // find the node with the value
+    // remove node with value
+    // swap node with the lowest tree node
+    let current = this;
+    while (current !== null) {
+      if (value < current.value) {
+        parentNode = current;
+        current = current.left;
+      } else if (value > current.value) {
+        parentNode = current;
+        current = current.right;
+      } else {
+        if (current.left !== null && current.right !== null) {
+          current.value = current.right.getMinValue();
+          // current.value = smallest value of right subtree
+          current.right.remove(current.value, current);
+        } else if (parentNode === null) {
+          // dealing with the root node case
+          if (current.left !== null) {
+            current.value = current.left.value;
+            current.right = current.left.right;
+            current.left = current.left.left;
+          } else if (current.right !== null) {
+            current.value = current.right.value;
+            current.right = current.right.right;
+            current.left = current.right.left;
+          } else {
+            current.value = null;
+          }
+        } else if (parentNode.left === current) {
+          parentNode.left =
+            current.left !== null ? current.left : current.right;
+        } else if (parentNode.right === current) {
+          parentNode.right =
+            current.left !== null ? current.left : current.right;
+        }
+        break;
+      }
+    }
     return this;
+  }
+
+  getMinValue() {
+    currentNode = this;
+    while (current.left !== null) {
+      current = current.left;
+    }
+    return current.value;
   }
 }
 
