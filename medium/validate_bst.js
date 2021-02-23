@@ -30,18 +30,37 @@ class BST {
   }
 }
 
-function validateBst(tree) {
-  let curr = tree;
-  while (true) {
-    if (curr.left.value < curr.value) {
-      curr = curr.left;
-    } else if (curr.right.value > curr.value) {
-      curr = curr.right;
-    }
+// function validateBst(tree) {
+//   let curr = tree;
+//   while (true) {
+//     if (curr.left.value < curr.value) {
+//       curr = curr.left;
+//     } else if (curr.right.value >= curr.value) {
+//       curr = curr.right;
+//     } else if (!curr.left && !curr.right) {
+//     }
+//     return true;
+//   }
+//   return false;
+// }
+
+// time: O(n) | space: O(d) where d is the depth of the tree (length of the longest branch)
+const validateBst = (tree) => {
+  // done recursively
+  return helper(tree, -Infinity, Infinity);
+};
+
+const helper = (tree, minValue, maxValue) => {
+  if (tree === null) {
     return true;
   }
-  return false;
-}
+  if (tree.value < minValue || tree.value >= maxValue) {
+    return false;
+  }
+  let leftIsValid = helper(tree.left, minValue, tree.value);
+  let rightIsValid = helper(tree.right, tree.value, maxValue);
+  return leftIsValid && rightIsValid;
+};
 
 let bst = new BSTRecur(10);
 bst.insert(20);
