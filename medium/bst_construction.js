@@ -146,4 +146,106 @@ class BST {
   }
 }
 
-let bst = new BST(10);
+class BSTRecur {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  // time: O(log(n)) | space: O(1)
+  insert(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        this.left = new BSTRecur(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (this.right === null) {
+        this.right = new BSTRecur(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+    return this;
+  }
+
+  // time: O(log(n)) | space: O(1)
+  contains(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    } else {
+      return true;
+    }
+  }
+
+  // time: O(log(n)) | space: O(1)
+  remove(value) {
+    if (value < this.value) {
+      if (this.left !== null) {
+        this.left.remove(value, this);
+      }
+    } else if (value > this.value) {
+      if (this.right !== null) {
+        this.right.remove(value, this);
+      }
+    } else {
+      // we found the value located in the bst;
+      // list of cases:
+      if (this.left !== null && this.right !== null) {
+        // if our node has both children
+        this.value = this.right.getMinValue();
+        this.right.remove(this.value, this);
+      } else if (parent === null) {
+        // if our node has no parent
+        if (this.left !== null) {
+          // if our node has no left child
+          this.value = this.left.value;
+          this.right = this.left.right;
+          this.left = this.left.left;
+        } else if (this.right !== null) {
+          // if our node has no right child
+          this.value = this.right.value;
+          this.right = this.right.right;
+          this.left = this.right.left;
+        } else {
+          // if our node has no children do nothing;
+        }
+      } else if (parent.left === this) {
+        // keep track of parents
+        parent.left = this.left !== null ? this.left : this.right;
+      } else if (parent.right === this) {
+        parent.right = this.left !== null ? this.left : this.right;
+      }
+    }
+  }
+
+  getMinValue() {
+    if (this.left === null) {
+      return this.value;
+    } else {
+      return this.left.getMinValue();
+    }
+  }
+}
+
+let bst = new BSTRecur(10);
+bst.insert(20);
+bst.insert(5);
+bst.insert(3);
+bst.insert(1);
+bst.insert(35);
+bst.insert(15);
+bst.insert(12);
+console.log(bst);
