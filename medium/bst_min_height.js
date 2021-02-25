@@ -56,5 +56,8 @@ class BST {
 
 const minHeightBst = (array) => {
   // find a midpoint
+  let midPoint = Math.floor(array.length / 2);
+  // making the array[midPoint] the root node because of the fact that these are distinct integers
   // find a suitable left node and a right node
+  // keep applying this logic through out the whole array
 };
