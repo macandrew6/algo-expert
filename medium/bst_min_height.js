@@ -56,9 +56,77 @@ class BST {
 
 // time: O(nlog(n)) (using given insert method) O(n) otherwise | space: O(n)
 const minHeightBst = (array) => {
+  return constructMinHeightBst(array, null, 0, array.length - 1);
+};
+
+const constructMinHeightBst = (array, bst, startIdx, endIdx) => {
+  if (endIdx < startIdx) {
+    return;
+  }
   // find a midpoint
-  let midPoint = Math.floor(array.length - 1 / 2);
   // making the array[midPoint] the root node because of the fact that these are distinct integers
   // find a suitable left node and a right node
+  let midPoint = Math.floor((startIdx + endIdx) / 2);
+  let valueToAdd = array[midPoint];
+  if (bst === null) {
+    bst = new BST(valueToAdd);
+  } else {
+    bst.insert(valueToAdd);
+  }
   // keep applying this logic through out the whole array
+  constructMinHeightBst(array, bst.left, startIdx, midPoint - 1);
+  constructMinHeightBst(array, bst.right, midPoint + 1, endIdx);
+  return bst;
+};
+
+// time: O(n) | space: O(n)
+const minHeightBstRefactor = (array) => {
+  return constructMinHeightBstRefactor(array, null, 0, array.length - 1);
+};
+
+const constructMinHeightBstRefactor = (array, bst, startIdx, endIdx) => {
+  if (endIdx < startIdx) {
+    return;
+  }
+  // find a midpoint
+  // making the array[midPoint] the root node because of the fact that these are distinct integers
+  // find a suitable left node and a right node
+  let midPoint = Math.floor((startIdx + endIdx) / 2);
+  let newBstNode = new BST(array[midPoint]);
+
+  if (bst === null) {
+    bst = newBstNode;
+  } else {
+    if (array[midPoint] < bst.value) {
+      bst.left = newBstNode;
+      bst = bst.left;
+    } else {
+      bst.right = newBstNode;
+      bst = bst.right;
+    }
+  }
+  // keep applying this logic through out the whole array
+  constructMinHeightBst(array, bst, startIdx, midPoint - 1);
+  constructMinHeightBst(array, bst, midPoint + 1, endIdx);
+  return bst;
+};
+
+//just cleaner code
+const minHeightBstRefactor2 = (array) => {
+  return constructMinHeightBstRefactor2(array, 0, array.length - 1);
+};
+
+const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
+  if (endIdx < startIdx) {
+    return null;
+  }
+  // find a midpoint
+  // making the array[midPoint] the root node because of the fact that these are distinct integers
+  // find a suitable left node and a right node
+  let midPoint = Math.floor((startIdx + endIdx) / 2);
+  let bst = new BST(array[midPoint]);
+  bst.left = constructMinHeightBstRefactor2(array, startIdx, midPoint - 1);
+  bst.right = constructMinHeightBstRefactor2(array, midPoint + 1, endIdx);
+
+  return bst;
 };
