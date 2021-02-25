@@ -56,5 +56,5 @@ class BST {
 
 const minHeightBst = (array) => {
   // find a midpoint
-  // look left and find a suitable left node and a right node
+  // find a suitable left node and a right node
 };
