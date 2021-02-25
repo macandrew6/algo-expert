@@ -54,9 +54,10 @@ class BST {
   }
 }
 
+// time: O(nlog(n)) (using given insert method) O(n) otherwise | space: O(n)
 const minHeightBst = (array) => {
   // find a midpoint
-  let midPoint = Math.floor(array.length / 2);
+  let midPoint = Math.floor(array.length - 1 / 2);
   // making the array[midPoint] the root node because of the fact that these are distinct integers
   // find a suitable left node and a right node
   // keep applying this logic through out the whole array
