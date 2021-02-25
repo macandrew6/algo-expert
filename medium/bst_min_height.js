@@ -74,8 +74,8 @@ const constructMinHeightBst = (array, bst, startIdx, endIdx) => {
     bst.insert(valueToAdd);
   }
   // keep applying this logic through out the whole array
-  constructMinHeightBst(array, bst.left, startIdx, midPoint - 1);
-  constructMinHeightBst(array, bst.right, midPoint + 1, endIdx);
+  constructMinHeightBst(array, bst, startIdx, midPoint - 1);
+  constructMinHeightBst(array, bst, midPoint + 1, endIdx);
   return bst;
 };
 
@@ -130,3 +130,6 @@ const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
 
   return bst;
 };
+
+let array = [1, 2, 5, 7, 10, 13, 14, 15, 22];
+console.log(minHeightBst(array));
