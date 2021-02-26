@@ -18,7 +18,7 @@ and its children nodes are either valid BST nodes themselves or null.
 bst = 
          15 
        /    \
-      5     20
+      5     20 
     /  \   /   \
    2    5 17    22
  /  \             
