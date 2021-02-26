@@ -89,7 +89,7 @@ const constructMinHeightBstRefactor = (array, bst, startIdx, endIdx) => {
     return;
   }
   // find a midpoint
-  // making the array[midPoint] the root node because of the fact that these are distinct integers
+  // making the array[midPoint] the root node value because of the fact that these are distinct integers
   // find a suitable left node and a right node
   let midPoint = Math.floor((startIdx + endIdx) / 2);
   let newBstNode = new BST(array[midPoint]);
