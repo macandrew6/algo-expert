@@ -38,5 +38,15 @@ class BST {
 
 const findKthLargestValueInBst = (tree, k) => {
   // Write your code here.
-  return -1;
+  let arr = traverseHelper(tree, []);
+  return arr[arr.length - k];
+};
+
+const traverseHelper = (tree, array) => {
+  if (tree !== null) {
+    traverseHelper(tree.left, array);
+    array.push(tree.value);
+    traverseHelper(tree.right, array);
+  }
+  return array;
 };

@@ -125,6 +125,7 @@ const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
   // find a suitable left node and a right node
   let midPoint = Math.floor((startIdx + endIdx) / 2);
   let bst = new BST(array[midPoint]);
+  // keep applying this logic through out the whole array
   bst.left = constructMinHeightBstRefactor2(array, startIdx, midPoint - 1);
   bst.right = constructMinHeightBstRefactor2(array, midPoint + 1, endIdx);
 
