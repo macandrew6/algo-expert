@@ -50,3 +50,28 @@ const traverseHelper = (tree, array) => {
   }
   return array;
 };
+
+const minHeightBstRefactor2 = (array) => {
+  return constructMinHeightBstRefactor2(array, 0, array.length - 1);
+};
+
+const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
+  if (endIdx < startIdx) {
+    return null;
+  }
+  // find a midpoint
+  // making the array[midPoint] the root node because of the fact that these are distinct integers
+  // find a suitable left node and a right node
+  let midPoint = Math.floor((startIdx + endIdx) / 2);
+  let bst = new BST(array[midPoint]);
+  // keep applying this logic through out the whole array
+  bst.left = constructMinHeightBstRefactor2(array, startIdx, midPoint - 1);
+  bst.right = constructMinHeightBstRefactor2(array, midPoint + 1, endIdx);
+
+  return bst;
+};
+
+let array = [1, 2, 3, 5, 5, 15, 20, 17, 22];
+let bst = minHeightBstRefactor2(array);
+
+console.log(findKthLargestValueInBst(bst));
