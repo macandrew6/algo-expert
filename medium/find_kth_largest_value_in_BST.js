@@ -71,7 +71,8 @@ const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
   return bst;
 };
 
-let array = [1, 2, 3, 5, 5, 15, 20, 17, 22];
+let array = [1, 2, 3, 5, 5, 15, 17, 20, 22];
 let bst = minHeightBstRefactor2(array);
+let k = 3;
 
-console.log(findKthLargestValueInBst(bst));
+console.log(findKthLargestValueInBst(bst, k));
