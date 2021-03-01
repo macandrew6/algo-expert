@@ -41,5 +41,14 @@ class BST {
 
 const reconstructBST = (preOrderTraversalValues) => {};
 
+const preOrderTraverseHelper = (tree) => {
+  if (!tree) {
+    // some action to be done on each node
+
+    preOrderTraverseHelper(tree.left);
+    preOrderTraverseHelper(tree.right);
+  }
+};
+
 let preOrderTraversalValues = [10, 4, 2, 1, 5, 17, 19, 18];
 console.log(reconstructBST(preOrderTraversalValues));
