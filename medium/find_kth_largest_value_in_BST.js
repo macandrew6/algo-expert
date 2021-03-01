@@ -71,12 +71,36 @@ const constructMinHeightBstRefactor2 = (array, startIdx, endIdx) => {
   return bst;
 };
 
-const findKthLargestValueInBstRefactor = () => {};
+// most optimal algo
+// time: O(h + k) | space: O(h)
 
-const backwardsBSTTraverse = () => {};
+class TreeInfo {
+  constructor(numberVisited, lastNodeVisited) {
+    this.numberVisited = numberVisited;
+    this.lastNodeVisited = lastNodeVisited;
+  }
+}
+
+const findKthLargestValueInBstRefactor = (tree, k) => {
+  let treeInfo = new TreeInfo(0, -1);
+  backwardsBSTTraverse(tree, k, treeInfo);
+  return treeInfo.lastNodeVisited;
+};
+
+const backwardsBSTTraverse = (tree, k, treeInfo) => {
+  if (tree === null || treeInfo.numberVisited >= k) {
+    return;
+  }
+  backwardsBSTTraverse(tree.right, k, treeInfo);
+  if (treeInfo.numberVisited < k) {
+    treeInfo.numberVisited++;
+    treeInfo.lastNodeVisited = tree.value;
+    backwardsBSTTraverse(tree.left, k, treeInfo);
+  }
+};
 
 let array = [1, 2, 3, 5, 5, 15, 17, 20, 22];
 let bst = minHeightBstRefactor2(array);
 let k = 3;
 
-console.log(findKthLargestValueInBst(bst, k));
+console.log(findKthLargestValueInBstRefactor(bst, k));
