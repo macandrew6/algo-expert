@@ -50,6 +50,7 @@ class TreeInfo {
   }
 }
 
+// time: O(n) | space: O(n)
 const binaryTreeDiameter = (tree) => {
   // Write your code here.
   // initialize a longestPath
