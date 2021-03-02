@@ -45,6 +45,12 @@ class BinaryTree {
 
 const binaryTreeDiameter = (tree) => {
   // Write your code here.
+  // initialize a longestPath
+  // initialize counter
+  // we want to search all nodes to the left first once we've hit a null value increment the counter
+  // until we reach a node on the right that has a value of null
+  // save that counter as the longestPath
+  // continue the search
   return -1;
 };
 
@@ -58,4 +64,5 @@ tree
 tree.left.addTreeRight(4).addTreeRight(5).addTreeRight(6);
 tree.addTreeRight(2);
 console.log(tree);
-// console.log(binaryTreeDiameter(tree));
+
+console.log(binaryTreeDiameter(tree));
