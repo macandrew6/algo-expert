@@ -43,6 +43,13 @@ class BinaryTree {
   };
 }
 
+class TreeInfo {
+  constructor(diameter, height) {
+    this.diameter = diameter;
+    this.height = height;
+  }
+}
+
 const binaryTreeDiameter = (tree) => {
   // Write your code here.
   // initialize a longestPath
@@ -51,16 +58,28 @@ const binaryTreeDiameter = (tree) => {
   // until we reach a node on the right that has a value of null
   // save that counter as the longestPath
   // continue the search
-  return -1;
+  return getTreeInfo(tree).diameter;
+};
+
+const getTreeInfo = (tree) => {
+  if (tree === null) return new TreeInfo(0, 0);
+
+  let leftTreeData = getTreeInfo(tree.left);
+  let rightTreeData = getTreeInfo(tree.right);
+
+  let longestPathThroughRoot = leftTreeData.height + rightTreeData.height;
+  let maxDiameterSoFar = Math.max(
+    leftTreeData.diameter,
+    rightTreeData.diameter
+  );
+  let currentDiameter = Math.max(longestPathThroughRoot, maxDiameterSoFar);
+  let currentHeight = 1 + Math.max(leftTreeData.height, rightTreeData.height);
+
+  return new TreeInfo(currentDiameter, currentHeight);
 };
 
 let tree = new BinaryTree(1);
-tree
-  .addTreeLeft(3)
-  .addTreeLeft(7)
-  .addTreeLeft(8)
-  .addTreeLeft(9)
-  .addTreeRight(4);
+tree.addTreeLeft(3).addTreeLeft(7).addTreeLeft(8).addTreeLeft(9);
 tree.left.addTreeRight(4).addTreeRight(5).addTreeRight(6);
 tree.addTreeRight(2);
 console.log(tree);
