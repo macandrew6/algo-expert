@@ -34,6 +34,20 @@ class BinaryTree {
   }
 }
 
+// time: O(n) | space: O(n)
+const invertBinaryTreeIter = (tree) => {
+  let queue = [tree];
+  while (queue.length) {
+    let current = queue.pop();
+    if (current === null) continue;
+    [current.left, current.right] = [current.right, current.left];
+    queue.push(current.left);
+    queue.push(current.right);
+  }
+  return tree;
+};
+
+// time: O(n) | space: O(h)
 const invertBinaryTree = (tree) => {
   if (tree === null) return null;
   // traverse the tree
@@ -44,3 +58,12 @@ const invertBinaryTree = (tree) => {
   invertBinaryTree(tree.right);
   return tree;
 };
+
+let bt = new BinaryTree(1);
+bt.left = new BinaryTree(2);
+bt.right = new BinaryTree(3);
+bt.left.left = new BinaryTree(4);
+bt.left.right = new BinaryTree(5);
+
+console.log(bt);
+console.log(invertBinaryTreeIter(bt));
