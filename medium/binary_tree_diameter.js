@@ -31,6 +31,16 @@ class BinaryTree {
     this.left = null;
     this.right = null;
   }
+
+  addTreeLeft = (value) => {
+    this.left = new BinaryTree(value);
+    return this.left;
+  };
+
+  addTreeRight = (value) => {
+    this.right = new BinaryTree(value);
+    return this.right;
+  };
 }
 
 const binaryTreeDiameter = (tree) => {
@@ -38,18 +48,14 @@ const binaryTreeDiameter = (tree) => {
   return -1;
 };
 
-const addTreeLeft = (tree, value) => {
-  tree.left = new BinaryTree(value);
-  return tree.left;
-};
-
-const addTreeRight = (tree, value) => {
-  tree.right = new BinaryTree(value);
-  return tree.right;
-};
-
 let tree = new BinaryTree(1);
-addTreeLeft(tree, 3).addTreeRight(tree, 7);
-
+tree
+  .addTreeLeft(3)
+  .addTreeLeft(7)
+  .addTreeLeft(8)
+  .addTreeLeft(9)
+  .addTreeRight(4);
+tree.left.addTreeRight(4).addTreeRight(5).addTreeRight(6);
+tree.addTreeRight(2);
 console.log(tree);
 // console.log(binaryTreeDiameter(tree));
