@@ -39,16 +39,31 @@ class BST {
   }
 }
 
-const reconstructBST = (preOrderTraversalValues) => {};
+// time: O(n^2) | space: O(h)
+const reconstructBST = (preOrderTraversalValues) => {
+  if (preOrderTraversalValues.length === 0) return null;
 
-const preOrderTraverseHelper = (tree) => {
-  if (!tree) {
-    // some action to be done on each node
+  let currentValue = preOrderTraversalValues[0];
+  let rightSubtreeRootIdx = preOrderTraversalValues.length;
 
-    preOrderTraverseHelper(tree.left);
-    preOrderTraverseHelper(tree.right);
+  for (let i = 1; i < preOrderTraversalValues.length; i++) {
+    if (preOrderTraversalValues[i] > currentValue) {
+      rightSubtreeRootIdx = i;
+      break;
+    }
   }
+
+  let leftSubtree = reconstructBST(
+    preOrderTraversalValues.slice(1, rightSubtreeRootIdx)
+  );
+  let rightSubtree = reconstructBST(
+    preOrderTraversalValues.slice(rightSubtreeRootIdx)
+  );
+  return new BST(currentValue, leftSubtree, rightSubtree);
 };
+
+// time: O(n) | space: O(h) but it is really O(n) space
+const reconstructBstRefactor = (preOrderTraversalValues) => {};
 
 let preOrderTraversalValues = [10, 4, 2, 1, 5, 17, 19, 18];
 console.log(reconstructBST(preOrderTraversalValues));
