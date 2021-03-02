@@ -47,7 +47,7 @@ const reconstructBST = (preOrderTraversalValues) => {
   let rightSubtreeRootIdx = preOrderTraversalValues.length;
 
   for (let i = 1; i < preOrderTraversalValues.length; i++) {
-    if (preOrderTraversalValues[i] > currentValue) {
+    if (preOrderTraversalValues[i] >= currentValue) {
       rightSubtreeRootIdx = i;
       break;
     }
@@ -63,7 +63,49 @@ const reconstructBST = (preOrderTraversalValues) => {
 };
 
 // time: O(n) | space: O(h) but it is really O(n) space
-const reconstructBstRefactor = (preOrderTraversalValues) => {};
+class TreeInfo {
+  constructor(rootIdx) {
+    this.rootIdx = rootIdx;
+  }
+}
+
+const reconstructBstRefactor = (preOrderTraversalValues) => {
+  let treeInfo = new TreeInfo(0);
+  return reconstructBstFromRange(
+    -Infinity,
+    Infinity,
+    preOrderTraversalValues,
+    treeInfo
+  );
+};
+
+const reconstructBstFromRange = (
+  lowerBound,
+  upperBound,
+  preOrderTraversalValues,
+  currentSubtreeInfo
+) => {
+  if (currentSubtreeInfo.rootIdx === preOrderTraversalValues.length)
+    return null;
+
+  let rootValue = preOrderTraversalValues[currentSubtreeInfo.rootIdx];
+  if (rootValue < lowerBound || rootValue >= upperBound) return null;
+
+  currentSubtreeInfo.rootIdx += 1;
+  let leftSubtree = reconstructBstFromRange(
+    lowerBound,
+    rootValue,
+    preOrderTraversalValues,
+    currentSubtreeInfo
+  );
+  let rightSubtree = reconstructBstFromRange(
+    rootValue,
+    upperBound,
+    preOrderTraversalValues,
+    currentSubtreeInfo
+  );
+  return new BST(rootValue, leftSubtree, rightSubtree);
+};
 
 let preOrderTraversalValues = [10, 4, 2, 1, 5, 17, 19, 18];
-console.log(reconstructBST(preOrderTraversalValues));
+console.log(reconstructBstRefactor(preOrderTraversalValues));
