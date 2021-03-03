@@ -56,7 +56,7 @@ const heightBalancedBinaryTree = (tree) => {
 
 const getTreeInfo = (node) => {
   if (node === null) {
-    return new TreeInfo(true, -1);
+    return new TreeInfo(true, 0);
   }
 
   let leftSubTreeInfo = getTreeInfo(node.left);
