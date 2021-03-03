@@ -48,28 +48,28 @@ class TreeInfo {
 const heightBalancedBinaryTree = (tree) => {
   // Write your code here.
   // init leftEdgeSum and a rightEdgeSum
-  if (tree.left === null && tree.right === null) {
-    return new TreeInfo(true, 1);
-  }
-
-  let greatestLeftSubtreeHeight = 0;
-  let greatestRightSubtreeHeight = 0;
-  let leftEdgeSum = 0;
-  let rightEdgeSum = 0;
-
-  if (leftEdgeSum > greatestLeftSubtreeHeight) {
-    greatestLeftSubtreeHeight = leftEdgeSum;
-  }
-
-  if (rightEdgeSum > greatestRightSubtreeHeight) {
-    greatestRightSubtreeHeight = rightEdgeSum;
-  }
-
-  heightBalancedBinaryTree(tree.left);
-  heightBalancedBinaryTree(tree.right);
   // iterate through the left subtree incrementing the leftEdgeSum and right subtree incrementing rightEdgeSum
   // at the end return if the difference between the sum is greater or less than or equal to 1
-  return Math.abs(greatestRightSubtreeHeight - greatestLeftSubtreeHeight) > 1;
+  let treeInfo = getTreeInfo(tree);
+  return treeInfo.isBalanced;
+};
+
+const getTreeInfo = (node) => {
+  if (node === null) {
+    return new TreeInfo(true, -1);
+  }
+
+  let leftSubTreeInfo = getTreeInfo(node.left);
+  let rightSubTreeInfo = getTreeInfo(node.right);
+
+  let isBalanced =
+    leftSubTreeInfo.isBalanced &&
+    rightSubTreeInfo.isBalanced &&
+    Math.abs(leftSubTreeInfo.height - rightSubTreeInfo.height) <= 1;
+
+  let height = Math.max(leftSubTreeInfo.height, rightSubTreeInfo.height) + 1;
+
+  return new TreeInfo(isBalanced, height);
 };
 
 let tree = new BinaryTree(1);
