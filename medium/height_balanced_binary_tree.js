@@ -37,6 +37,7 @@ class BinaryTree {
   }
 }
 
+// time: O(n) | space: O(h)
 class TreeInfo {
   constructor(isBalanced = false, height) {
     this.isBalanced = isBalanced;
