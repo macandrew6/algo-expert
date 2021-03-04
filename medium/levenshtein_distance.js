@@ -35,6 +35,8 @@ const levenshteinDistance = (str1, str2) => {
     row[0] = i;
     edit.push(row);
   }
+  // str1 == 'abc'
+  // str2 == 'yabd'
   for (let i = 1; i < str1.length + 1; i++) {
     for (let j = 1; j < str2.length + 1; j++) {
       if (str1[i - 1] === str2[j - 1]) {
