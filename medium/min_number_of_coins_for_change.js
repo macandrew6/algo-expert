@@ -29,7 +29,19 @@ denoms = [1, 2, 4] => 2 // 2 + 4 = 6
 */
 
 // time: O(n*d) where d is the denominations | space: O(n)
-const minNumberOfCoinsForChange = (n, denoms) => {};
+const minNumberOfCoinsForChange = (n, denoms) => {
+  // if denom <= amount
+  // update nums[amount] = min(nums[amount], 1 + nums[amount - denom])
+  let nums = new Array(n + 1).fill(0);
+  denoms.forEach((denom) => {
+    for (let amount = 1; amount <= nums; amount++) {
+      if (denom <= amount) {
+        nums[amount] = Math.min(nums[amount], 1 + nums[amount - denom]);
+      }
+    }
+  });
+  return nums[nums.length - 1];
+};
 
 let n = 7;
 let denoms = [1, 5, 10];
