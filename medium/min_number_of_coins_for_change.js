@@ -18,3 +18,19 @@ denoms = [1, 5, 10]
 output:
 3 // 2x1 + 1x5
 */
+
+/*
+n = 6
+denoms = [1, 2, 4] => 2 // 2 + 4 = 6
+             * 
+[0, 1, 1, 2, 1, 2, 2]
+ 0  1  2  3  4  5  6
+ 5 - 4 = 1
+*/
+
+// time: O(n*d) where d is the denominations | space: O(n)
+const minNumberOfCoinsForChange = (n, denoms) => {};
+
+let n = 7;
+let denoms = [1, 5, 10];
+console.log(minNumberOfCoinsForChange(n, denoms));
