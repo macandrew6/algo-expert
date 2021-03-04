@@ -26,8 +26,28 @@ output:
 // space: O(n*m)
 const levenshteinDistance = (str1, str2) => {
   // build a two dimensional array of the minimum numbers of edits for pairs of
+  let edit = [];
+  for (let i = 0; i < str1.length + 1; i++) {
+    let row = [];
+    for (let j = 0; j < str2.length + 1; j++) {
+      row.push(j);
+    }
+    row[0] = i;
+    edit.push(row);
+  }
+  for (let i = 1; i < str1.length + 1; i++) {
+    for (let j = 1; j < str2.length + 1; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        edit[i][j] = edit[i - 1][j - 1];
+      } else {
+        edit[i][j] =
+          1 + Math.min(edit[i - 1][j], edit[i][j - 1], edit[i - 1][j - 1]);
+      }
+    }
+  }
+  return edit[str1.length][str2.length];
 };
 
 let str1 = 'abc';
 let str2 = 'yabd';
-console.log(lavenshteinDistance(str1, str2));
+console.log(levenshteinDistance(str1, str2));
