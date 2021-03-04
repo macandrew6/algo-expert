@@ -23,7 +23,7 @@ output:
 n = 6
 denoms = [1, 2, 4] => 2 // 2 + 4 = 6
              * 
-[0, 1, 1, 2, 1, 2, 2]
+[0, 1, 1, 2, 1, 2, 2] <= initiate all values to Infinity
  0  1  2  3  4  5  6
  5 - 4 = 1
 */
@@ -32,15 +32,16 @@ denoms = [1, 2, 4] => 2 // 2 + 4 = 6
 const minNumberOfCoinsForChange = (n, denoms) => {
   // if denom <= amount
   // update nums[amount] = min(nums[amount], 1 + nums[amount - denom])
-  let nums = new Array(n + 1).fill(0);
+  let nums = new Array(n + 1).fill(Infinity);
+  nums[0] = 0;
   denoms.forEach((denom) => {
-    for (let amount = 1; amount <= nums; amount++) {
+    for (let amount = 0; amount <= n; amount++) {
       if (denom <= amount) {
         nums[amount] = Math.min(nums[amount], 1 + nums[amount - denom]);
       }
     }
   });
-  return nums[nums.length - 1];
+  return nums[n] !== Infinity ? nums[n] : -1;
 };
 
 let n = 7;
