@@ -52,7 +52,9 @@ const levenshteinDistance = (str1, str2) => {
 
 // time: O(n*m)
 // space: O(min(n, m))
-const levenshteinDistanceRefactor = (str1, str2) => {};
+const levenshteinDistanceRefactor = (str1, str2) => {
+  // adds a few alias to terminal
+};
 
 let str1 = 'abc';
 let str2 = 'yabd';
