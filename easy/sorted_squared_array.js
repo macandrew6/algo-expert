@@ -22,7 +22,32 @@ const sortedSquaredArray = (array) => {
   return array[0] < 0 ? res.sort((a, b) => a - b) : res;
 };
 
-const sortedSquareArrayRefactor = (array) => {};
+const sortedSquareArrayRefactor = (array) => {
+  // initialize squaredValues
+  //          V
+  // [-4, -2, 0, 1, 3]
+  //          ^
+  //  V
+  // [0, 1, 4, 9, 16]
+  let squaredOrderedValues = new Array(array.length).fill(0);
+  let squaredOrderedValuesPointer = array.length - 1;
+  let start = 0;
+  let end = array.length - 1;
+  while (start <= end) {
+    if (Math.abs(array[start]) >= Math.abs(array[end])) {
+      squaredOrderedValues[squaredOrderedValuesPointer] =
+        array[start] * array[start];
+      start++;
+      squaredOrderedValuesPointer--;
+    } else if (Math.abs(array[start]) < Math.abs(array[end])) {
+      squaredOrderedValues[squaredOrderedValuesPointer] =
+        array[end] * array[end];
+      end--;
+      squaredOrderedValuesPointer--;
+    }
+  }
+  return squaredOrderedValues;
+};
 
-let array = [1, 2, 3, 5, 6, 8, 9];
+let array = [-4, -2, 0, 1, 3];
 console.log(sortedSquaredArray(array));
