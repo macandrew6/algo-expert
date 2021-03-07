@@ -23,12 +23,6 @@ const sortedSquaredArray = (array) => {
 };
 
 const sortedSquaredArrayRefactor = (array) => {
-  // initialize squaredValues
-  //          V
-  // [-4, -2, 0, 1, 3]
-  //          ^
-  //  V
-  // [0, 1, 4, 9, 16]
   let squaredOrderedValues = new Array(array.length).fill(0);
   let start = 0;
   let end = array.length - 1;
