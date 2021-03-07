@@ -50,7 +50,7 @@ const countCharacterFrequency = (character, target) => {
 };
 
 // time: O(c * (n + m))
-// space: O(1)
+// space: O(c)
 const gernerateDocumentRefactor = (characters, document) => {
   let characterCountHash = {};
   for (let i = 0; i < characters.length; i++) {
