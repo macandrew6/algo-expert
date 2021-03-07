@@ -24,29 +24,55 @@ true
 */
 
 // brute force solution
-// time: O(m * (n + m))
+// time: O(m * (n + m)) where n is the length of the document and m is the length of the characters
 // space: O(1)
 const generateDocument = (characters, document) => {
-  let characterHash = {};
-  let documentHash = {};
-  for (let i = 0; i < characters.length; i++) {
-    if (!characterHash[characters[i]]) {
-      characterHash[characters[i]] = 0;
-    }
-    characterHash[characters[i]] += 1;
-  }
-  console.log(characterHash);
-  for (let i = 0; i < document.length; i++) {
-    if (!documentHash[document[i]]) {
-      documentHash[document[i]];
+  // get character counts of both caracters and documents
+  // compare them in the end
+  for (let character of document) {
+    let documentFrequency = countCharacterFrequency(character, document);
+    let charactersFrequency = countCharacterFrequency(character, characters);
+    if (documentFrequency > charactersFrequency) {
+      return false;
     }
   }
+  return true;
+};
+
+const countCharacterFrequency = (character, target) => {
+  let frequency = 0;
+  for (let char of target) {
+    if (char === character) {
+      frequency += 1;
+    }
+  }
+  return frequency;
 };
 
 // time: O(c * (n + m))
 // space: O(1)
-const gernerateDocumentRefactor = (characters, document) => {};
+const gernerateDocumentRefactor = (characters, document) => {
+  let characterCountHash = {};
+  for (let i = 0; i < characters.length; i++) {
+    if (!characterCountHash[characters[i]]) {
+      characterCountHash[characters[i]] = 0;
+    }
+    characterCountHash[characters[i]] += 1;
+  }
+  for (let i = 0; i < document.length; i++) {
+    if (characterCountHash[document[i]]) {
+      characterCountHash[document[i]]--;
+    } else {
+      return false;
+    }
+    if (characterCountHash[document[i]] < 0) {
+      return false;
+    }
+  }
+  console.log(characterCountHash);
+  return true;
+};
 
 let characters = 'Bste!hetsi ogEAxpelrt x ';
-let document = 'AlgoExpert is the Best!';
+let document = 'AlgoExpert is the Best!plum';
 console.log(generateDocument(characters, document));
