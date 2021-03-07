@@ -30,20 +30,15 @@ const sortedSquaredArrayRefactor = (array) => {
   //  V
   // [0, 1, 4, 9, 16]
   let squaredOrderedValues = new Array(array.length).fill(0);
-  let squaredOrderedValuesPointer = array.length - 1;
   let start = 0;
   let end = array.length - 1;
-  while (start <= end) {
+  for (let i = array.length - 1; i >= 0; i--) {
     if (Math.abs(array[start]) >= Math.abs(array[end])) {
-      squaredOrderedValues[squaredOrderedValuesPointer] =
-        array[start] * array[start];
-      start++;
-      squaredOrderedValuesPointer--;
+      squaredOrderedValues[i] = array[start] * array[start];
+      start++ - 1;
     } else if (Math.abs(array[start]) < Math.abs(array[end])) {
-      squaredOrderedValues[squaredOrderedValuesPointer] =
-        array[end] * array[end];
+      squaredOrderedValues[i] = array[end] * array[end];
       end--;
-      squaredOrderedValuesPointer--;
     }
   }
   return squaredOrderedValues;
