@@ -60,19 +60,26 @@ const gernerateDocumentRefactor = (characters, document) => {
     characterCountHash[characters[i]] += 1;
   }
   for (let i = 0; i < document.length; i++) {
-    if (characterCountHash[document[i]]) {
-      characterCountHash[document[i]]--;
-    } else {
+    // if (characterCountHash[document[i]]) {
+    //   characterCountHash[document[i]]--;
+    // } else {
+    //   return false;
+    // }
+    // if (characterCountHash[document[i]] < 0) {
+    //   return false;
+    // }
+    if (
+      !characterCountHash.hasOwnProperty(document[i]) ||
+      characterCountHash[document[i]] === 0
+    ) {
       return false;
     }
-    if (characterCountHash[document[i]] < 0) {
-      return false;
-    }
+    characterCountHash[document[i]] -= 1;
   }
   console.log(characterCountHash);
   return true;
 };
 
 let characters = 'Bste!hetsi ogEAxpelrt x ';
-let document = 'AlgoExpert is the Best!plum';
-console.log(generateDocument(characters, document));
+let document = 'AlgoExpert is the Best!';
+console.log(gernerateDocumentRefactor(characters, document));
