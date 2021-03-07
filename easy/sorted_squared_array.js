@@ -22,7 +22,7 @@ const sortedSquaredArray = (array) => {
   return array[0] < 0 ? res.sort((a, b) => a - b) : res;
 };
 
-const sortedSquareArrayRefactor = (array) => {
+const sortedSquaredArrayRefactor = (array) => {
   // initialize squaredValues
   //          V
   // [-4, -2, 0, 1, 3]
@@ -50,4 +50,4 @@ const sortedSquareArrayRefactor = (array) => {
 };
 
 let array = [-4, -2, 0, 1, 3];
-console.log(sortedSquaredArray(array));
+console.log(sortedSquaredArrayRefactor(array));
