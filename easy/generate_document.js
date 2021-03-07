@@ -23,21 +23,29 @@ output:
 true
 */
 
+// brute force solution
+// time: O(m * (n + m))
+// space: O(1)
 const generateDocument = (characters, document) => {
   let characterHash = {};
+  let documentHash = {};
   for (let i = 0; i < characters.length; i++) {
     if (!characterHash[characters[i]]) {
-      characterHash[characters[i]] = [];
+      characterHash[characters[i]] = 0;
     }
-    characterHash[characters[i]].push(characters[i]);
+    characterHash[characters[i]] += 1;
   }
   console.log(characterHash);
   for (let i = 0; i < document.length; i++) {
-    if (characterHash[document[i]]) {
-      characterHash[document[i]].shift();
+    if (!documentHash[document[i]]) {
+      documentHash[document[i]];
     }
   }
 };
+
+// time: O(c * (n + m))
+// space: O(1)
+const gernerateDocumentRefactor = (characters, document) => {};
 
 let characters = 'Bste!hetsi ogEAxpelrt x ';
 let document = 'AlgoExpert is the Best!';
