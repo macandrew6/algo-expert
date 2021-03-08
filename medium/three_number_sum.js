@@ -24,7 +24,7 @@ result => [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 sub = [-8, 2, 6]
 */
 
-// time = O (n^2) | space = O (n)
+// time = O (n^2) | space = O (n^2)
 const threeNumberSum = (array, targetSum) => {
   let result = [];
   array.sort((a, b) => a - b);

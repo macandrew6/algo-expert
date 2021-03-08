@@ -35,9 +35,10 @@ output:
 
 // recursive solution (brute force - may fail large enough test cases)
 // time: O(2^(n + m))
-// space:
+// space: O(2^(n + m))
 const numberOfWaysToTraverseGraphRecur = (width, height) => {
   // base case is if our width or our height === 1
+  // width = 3 height = 2
   if (width === 1 || height === 1) return 1;
 
   return (
@@ -52,6 +53,28 @@ const numberOfWaysToTraverseGraphRecur = (width, height) => {
 const numberOfWaysToTraverseGraphDynamic = (width, height) => {
   // store the values in a 2d array
   // two pointers
+  let numberOfWays = [];
+  for (let i = 0; i <= height; i++) {
+    let row = [];
+    for (let j = 0; j <= width; j++) {
+      row.push(0);
+    }
+    numberOfWays.push(row);
+  }
+  for (let widthIdx = 1; widthIdx <= width; widthIdx++) {
+    for (let heightIdx = 1; heightIdx <= height; heightIdx++) {
+      if (widthIdx === 1 || heightIdx === 1) {
+        numberOfWays[heightIdx][widthIdx] = 1;
+      } else {
+        let waysLeft = numberOfWays[heightIdx][widthIdx - 1];
+        let waysUp = numberOfWays[heightIdx - 1][widthIdx];
+        numberOfWays[heightIdx][widthIdx] = waysLeft + waysUp;
+      }
+    }
+  }
+  console.log(numberOfWays);
+
+  return numberOfWays[height][width];
 };
 
 // math trick
@@ -59,10 +82,22 @@ const numberOfWaysToTraverseGraphDynamic = (width, height) => {
 // space: O(1)
 const numberOfWaysToTraverseGraphMath = (width, height) => {
   // right = 3 moves to reach the end
+  let x = width - 1;
   // down = 2 moves to reach the end
+  let y = height - 1;
   // (right + down)! / right! * down! math formula
+  let numerator = factorial(x + y);
+  let denominator = factorial(x) * factorial(y);
+  return numerator / denominator;
 };
 
+const factorial = (num) => {
+  result = 1;
+  for (let i = 2; i <= num; i++) {
+    result *= i;
+  }
+  return result;
+};
 let width = 4;
 let height = 3;
-console.log(numberOfWaysToTraverseGraph(width, height));
+console.log(numberOfWaysToTraverseGraphMath(width, height));
