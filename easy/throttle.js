@@ -26,4 +26,5 @@ Function.prototype.myThrottle = (interval) => {
 let fn = (a, b) => a + b;
 console.log(fn.myThrottle(50000));
 console.log(fn(1, 2));
-console.log(fn(1, 2));
+console.log(fn(1, 3));
+console.log(fn(1, 6));
