@@ -90,8 +90,9 @@ maxHeap.insert(29);
 maxHeap.insert(50);
 maxHeap.insert(100);
 maxHeap.insert(36);
+maxHeap.deleteMax();
 
-console.log();
+console.log(maxHeap);
 
 module.exports = {
   MaxHeap,
