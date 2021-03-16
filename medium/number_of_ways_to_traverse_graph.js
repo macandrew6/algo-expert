@@ -5,7 +5,7 @@ You're given two positive integers representing the width and height of a grid-s
 the number of ways to reach the bottom right corner of the graph when starting at the top left corner. Each move you take must either
 go down or right. In other words, you can never move up or left in the graph.
 
-Gor example, given the graph illustrated below, wih width = 2 and height = 3, there are three ways to reach the bottom right
+For example, given the graph illustrated below, wih width = 2 and height = 3, there are three ways to reach the bottom right
 corner when starting at the top left corner:
 
  _ _
@@ -72,7 +72,6 @@ const numberOfWaysToTraverseGraphDynamic = (width, height) => {
       }
     }
   }
-  console.log(numberOfWays);
 
   return numberOfWays[height][width];
 };
