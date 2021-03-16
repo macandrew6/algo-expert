@@ -19,8 +19,18 @@ scratchpad:
 
 */
 
+// time: O(n)
+// space: O(1)
 const kadanesAlgorithm = (array) => {
   // formula: max(sum + curr , curr)
+  let maxEnding = array[0];
+  let maxSoFar = array[0];
+  for (let i = 1; i < array.length; i++) {
+    let num = array[i];
+    maxEnding = Math.max(num, maxEnding + num);
+    maxSoFar = Math.max(maxSoFar, maxEnding);
+  }
+  return maxSoFar;
 };
 
 let array = [3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4];
