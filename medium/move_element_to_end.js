@@ -12,13 +12,7 @@ array = [2, 1, 2, 2, 2, 3, 4, 2]
 toMove = 2
 */
 
-/*
- V  
-[4, 1, 2, 2, 2, 3, 2, 2] target = 2
-                   ^ 
-i = 0
-j = end
-*/
+
 
 // time O(n(log(n))) | space O(1)
 const moveElementToEnd = (array, toMove) => {
@@ -56,6 +50,14 @@ const moveElementToEndRefactor = (array, toMove) => {
   }
   return array;
 };
+
+/*
+          V  
+[4, 1, 3, 2, 2, 2, 2, 2] target = 2
+        ^ 
+front = 4
+back = 3
+*/
 
 let array = [2, 1, 2, 2, 2, 3, 4, 2];
 let toMove = 2;

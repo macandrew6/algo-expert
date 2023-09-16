@@ -35,6 +35,8 @@ const arrayOfProducts = (array) => {
     rightProducts[j] = rightRunningProduct;
     rightRunningProduct *= array[j];
   }
+  console.log(leftProducts)
+  console.log(rightProducts)
   return result.map((el, idx) => {
     console.log(leftProducts[idx], rightProducts[idx]);
     return leftProducts[idx] * rightProducts[idx];
@@ -54,7 +56,15 @@ const arrayOfProductsRefactor = (array) => {
     result[j] *= rightRunningProduct;
     rightRunningProduct *= array[j];
   }
+  return result;
 };
 
 let array = [5, 1, 4, 2];
+/*
+ V
+[5, 1, 4, 2]
+ left running products = [1, 5, 5, 20]
+ right running products = [8, 8, 2, 1]
+
+*/
 console.log(arrayOfProducts(array));
