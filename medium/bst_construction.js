@@ -56,34 +56,44 @@ class BST {
     this.right = null;
   }
 
+  // time: O(log(n)) | space: O(1)
   insert(value) {
-		let current = this;
-		while (current.left !== null || current.right !== null) {
-			if (value < current.value) {
-				current = current.left;
-			} else if (value > current.value) {
-				current = current.right;
-			}	
-		}
-		current = new BST(value);
+    let current = this;
+    while (true) {
+      if (value < current.value) {
+        if (current.left === null) {
+          current.left = new BST(value);
+          break;
+        }
+        current = current.left;
+      } else {
+        if (current.right === null) {
+          current.right = new BST(value);
+          break;
+        }
+        current = current.right;
+      }
+    }
     return this;
   }
 
+  // time: O(log(n)) | space: O(1)
   contains(value) {
     // Write your code here.
-		let current = this;
-		while (current.left !== null || current.right !== null) {
-			if (value < current.value) {
-				current = current.left;
-			} else if (value > current.value) {
-				current = current.right;
-			}	else {
-				return true;
-			}
-		}
-		return false;
+    let current = this;
+    while (current !== null) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
 
+<<<<<<< HEAD
   remove(value) {
 		// find the node with the value
     let current = this;
@@ -98,8 +108,161 @@ class BST {
 		}
 		// remove node with value
 		// swap node with the lowest tree node
+=======
+  // time: O(log(n)) | space: O(1)
+  remove(value, parentNode = null) {
+    // find the node with the value
+    // remove node with value
+    // swap node with the lowest tree node
+    let current = this;
+    while (current !== null) {
+      if (value < current.value) {
+        parentNode = current;
+        current = current.left;
+      } else if (value > current.value) {
+        parentNode = current;
+        current = current.right;
+      } else {
+        if (current.left !== null && current.right !== null) {
+          current.value = current.right.getMinValue();
+          // current.value = smallest value of right subtree
+          current.right.remove(current.value, current);
+        } else if (parentNode === null) {
+          // dealing with the root node case
+          if (current.left !== null) {
+            current.value = current.left.value;
+            current.right = current.left.right;
+            current.left = current.left.left;
+          } else if (current.right !== null) {
+            current.value = current.right.value;
+            current.right = current.right.right;
+            current.left = current.right.left;
+          } else {
+            current.value = null;
+          }
+        } else if (parentNode.left === current) {
+          parentNode.left =
+            current.left !== null ? current.left : current.right;
+        } else if (parentNode.right === current) {
+          parentNode.right =
+            current.left !== null ? current.left : current.right;
+        }
+        break;
+      }
+    }
     return this;
+  }
+
+  getMinValue() {
+    currentNode = this;
+    while (current.left !== null) {
+      current = current.left;
+    }
+    return current.value;
   }
 }
 
-let bst = new BST(10);
+class BSTRecur {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  // time: O(log(n)) | space: O(1)
+  insert(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        this.left = new BSTRecur(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (this.right === null) {
+        this.right = new BSTRecur(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+>>>>>>> b5982eae7de91059996d08cdde8c825838dfbace
+    return this;
+  }
+
+  // time: O(log(n)) | space: O(1)
+  contains(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    } else {
+      return true;
+    }
+  }
+
+  // time: O(log(n)) | space: O(1)
+  remove(value) {
+    if (value < this.value) {
+      if (this.left !== null) {
+        this.left.remove(value, this);
+      }
+    } else if (value > this.value) {
+      if (this.right !== null) {
+        this.right.remove(value, this);
+      }
+    } else {
+      // we found the value located in the bst;
+      // list of cases:
+      if (this.left !== null && this.right !== null) {
+        // if our node has both children
+        this.value = this.right.getMinValue();
+        this.right.remove(this.value, this);
+      } else if (parent === null) {
+        // if our node has no parent
+        if (this.left !== null) {
+          // if our node has no left child
+          this.value = this.left.value;
+          this.right = this.left.right;
+          this.left = this.left.left;
+        } else if (this.right !== null) {
+          // if our node has no right child
+          this.value = this.right.value;
+          this.right = this.right.right;
+          this.left = this.right.left;
+        } else {
+          // if our node has no children do nothing;
+        }
+      } else if (parent.left === this) {
+        // keep track of parents
+        parent.left = this.left !== null ? this.left : this.right;
+      } else if (parent.right === this) {
+        parent.right = this.left !== null ? this.left : this.right;
+      }
+    }
+  }
+
+  getMinValue() {
+    if (this.left === null) {
+      return this.value;
+    } else {
+      return this.left.getMinValue();
+    }
+  }
+}
+
+let bst = new BSTRecur(10);
+bst.insert(20);
+bst.insert(5);
+bst.insert(3);
+bst.insert(1);
+bst.insert(35);
+bst.insert(15);
+bst.insert(12);
+console.log(bst);

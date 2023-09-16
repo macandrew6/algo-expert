@@ -45,6 +45,7 @@ function branchSum(root) {
 
 function calculateBranchSum(node, runningSum, sums) {
   // using recursion
+  // need to keep track of a changing runningSum
   if (!node) {
     return;
   }

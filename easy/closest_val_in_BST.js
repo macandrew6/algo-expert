@@ -38,41 +38,40 @@ class BST {
 // recursive approach =>
 // average: O(log(n)) time / O(log((n))) space
 // worst: O(n) / O(n)
-// function findClosestValueInBst(tree, target) {
-//   // init a closestValue variable
-//   return helperMethod(tree, target, Number(Infinity));
-// }
+function findClosestValueInBstRecur(tree, target) {
+  // init a closestValue variable
+  return helperMethod(tree, target, Number(Infinity));
+}
 
-// function helperMethod(tree, target, closestValue) {
-//   // if the  |target - current| value is less than the |target - closestValue|
-//   // reassign the closestValue to the current
-//   // return the closestValue
-//   if (!tree) {
-//     return closestValue;
-//   }
-//   if (Math.abs(target - closestValue) > Math.abs(target - tree.value)) {
-//     closestValue = tree.value;
-//   }
-//   if (target < tree.value) {
-//     return helperMethod(tree.left, target, closestValue);
-//   } else if (target > tree.value) {
-//     return helperMethod(tree.right, target, closestValue);
-//   } else {
-//     return closestValue;
-//   }
-// }
+function helperMethod(tree, target, closestValue) {
+  // if the  |target - current| value is less than the |target - closestValue|
+  // reassign the closestValue to the current
+  // return the closestValue
+  if (!tree) {
+    return closestValue;
+  }
+  if (Math.abs(target - closestValue) > Math.abs(target - tree.value)) {
+    closestValue = tree.value;
+  }
+  if (target < tree.value) {
+    return helperMethod(tree.left, target, closestValue);
+  } else if (target > tree.value) {
+    return helperMethod(tree.right, target, closestValue);
+  } else {
+    return closestValue;
+  }
+}
 
 // iterative approach
 // average: O(log(n)) time / O(1) space
 // worst: O(n) time / O(1) space
-
 function findClosestValueInBst(bst, target) {
   // reassign the bst if the target is less than equal to or
   // greater than the current bst value
   // new pseudo code
   // start with conditions
   let currentNode = bst;
-  let closestValue = null;
+  let closestValue = Number(Infinity);
   while (currentNode) {
     if (
       Math.abs(target - closestValue) > Math.abs(target - currentNode.value)

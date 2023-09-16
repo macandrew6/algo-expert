@@ -28,7 +28,6 @@ const heapSort = (array) => {
   for (let i = array.length - 1; i >= 0; i--) {
     heapify(array, array.length, i);
   }
-  console.log(array);
   for (let endOfHeap = array.length - 1; endOfHeap >= 0; endOfHeap--) {
     swap(array, endOfHeap, 0);
     heapify(array, endOfHeap, 0);
